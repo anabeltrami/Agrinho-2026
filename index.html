@@ -1,455 +1,401 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Projeto MIP</title>
-
-    <!-- Fonte do Google -->
+    <title>Projeto MIP - Manejo Integrado de Pragas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --verde-principal: #2d6a4f;
+            --verde-claro: #d8f3dc;
+            --verde-destaque: #52b788;
+            --azul-claro: #e0f2fe;
+            --azul-botao: #38bdf8;
+            --azul-escuro: #0369a1;
+            --texto-cor: #2d3748;
+            --background: #f0fdf4;
+        }
 
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    <!-- Arquivo CSS -->
-    <link rel="stylesheet" href="style.css">
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--background);
+            color: var(--texto-cor);
+            line-height: 1.6;
+            padding-bottom: 60px;
+            transition: font-size 0.2s ease;
+        }
 
+        header {
+            background: linear-gradient(135deg, var(--verde-principal), var(--verde-destaque));
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Barra de Acessibilidade */
+        .accessibility-bar {
+            background-color: var(--azul-claro);
+            padding: 10px 20px;
+            text-align: right;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            align-items: center;
+            border-bottom: 2px solid #bae6fd;
+        }
+
+        .accessibility-bar span {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--azul-escuro);
+        }
+
+        .btn-acc {
+            background-color: white;
+            border: 2px solid var(--azul-botao);
+            color: var(--azul-escuro);
+            padding: 5px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Nunito', sans-serif;
+            transition: all 0.2s;
+        }
+
+        .btn-acc:hover {
+            background-color: var(--azul-botao);
+            color: white;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(45, 106, 79, 0.05);
+            border: 1px solid var(--verde-claro);
+        }
+
+        h2 {
+            color: var(--verde-principal);
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            border-left: 5px solid var(--verde-destaque);
+            padding-left: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+
+        strong {
+            color: var(--verde-principal);
+        }
+
+        /* Grid de Métodos */
+        .metodos-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .metodo-item {
+            background-color: var(--azul-claro);
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px solid #bae6fd;
+        }
+
+        .metodo-item strong {
+            color: var(--azul-escuro);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Seção do Chat Interativo */
+        .chat-container {
+            background-color: #fafafa;
+            border: 2px dashed var(--azul-botao);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .chat-window {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            height: 250px;
+            overflow-y: auto;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .msg {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 0.95rem;
+        }
+
+        .msg.user {
+            background-color: var(--verde-claro);
+            color: var(--verde-principal);
+            margin-left: auto;
+            border-bottom-right-radius: 2px;
+        }
+
+        .msg.bot {
+            background-color: var(--azul-claro);
+            color: var(--azul-escuro);
+            margin-right: auto;
+            border-bottom-left-radius: 2px;
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 10px;
+        }
+
+        select {
+            flex: 1;
+            padding: 10px;
+            border-radius: 12px;
+            border: 2px solid var(--azul-botao);
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            background-color: white;
+        }
+
+        .btn-send {
+            background-color: var(--verde-destaque);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Nunito', sans-serif;
+            transition: background 0.2s;
+        }
+
+        .btn-send:hover {
+            background-color: var(--verde-principal);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--verde-principal);
+            color: white;
+            margin-top: 30px;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+        }
+
+        .refs {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+    </style>
 </head>
-
 <body>
 
-    <!-- Cabeçalho do site -->
+    <div class="accessibility-bar">
+        <span>Acessibilidade ♿:</span>
+        <button class="btn-acc" onclick="alterarFonte(1)">Aumentar Letra ➕</button>
+        <button class="btn-acc" onclick="alterarFonte(-1)">Diminuir Letra ➖</button>
+        <button class="btn-acc" onclick="resetarFonte()">Padrão 🔄</button>
+    </div>
+
     <header>
-
-        <h1>🌱 Projeto MIP</h1>
-
-        <h2>Manejo Integrado de Pragas</h2>
-
+        <h1>Projeto MIP 🌾</h1>
+        <p>Manejo Integrado de Pragas &amp; Agricultura Sustentável</p>
     </header>
 
     <main>
+        <div class="card">
+            <p>O projeto Mip, também conhecido como Manejo Integrado de Pragas, é uma maneira ecológica e inteligente de cuidar das plantações. Trocando o método de usar produtos químicos contra insetos, ele usa outros diversos métodos diferentes para proteger a plantação, assim protegendo a natureza. 🍃</p>
+        </div>
 
-        <!-- Seção: O que é -->
-        <section class="card">
+        <div class="card">
+            <h2>🎯 Objetivo</h2>
+            <p>Esse projeto serve para prevenir, monitorar e controlar pragas que causam grande prejuízo a agricultura, com o objetivo de preservá-las sem eliminar elas completamente e apenas, manter elas controladas. Ajuda também na parte de tomada de decisões, fazendo os agricultores saberem o momento certo de agir. 📊</p>
+        </div>
 
-            <h2>O que é?</h2>
+        <div class="card">
+            <h2>🌱 Prática</h2>
+            <p>Permite controlar as pragas de forma eficiente e sustentável. Usando estratégias como utilizar agrotóxicos apenas quando necessário, reduzindo assim os prejuízos nas lavouras, protegendo o meio ambiente e contribuindo para a produção de alimentos mais seguros. Dessa maneira, promovendo uma agricultura mais equilibrada e responsável possível. 🚜</p>
+        </div>
 
-            <p>
-                O projeto Mip, também conhecido como Manejo Integrado de Pragas, é uma maneira ecológica e inteligente de cuidar das plantações. Trocando o método de usar produtos químicos contra insetos, ele usa outros diversos métodos diferentes para proteger a plantação, assim protegendo a natureza.
-            </p>
-
-        </section>
-
-        <!-- Seção: Objetivo -->
-        <section class="card">
-
-            <h2>Objetivo</h2>
-
-            <p>
-                Esse projeto serve para prevenir, monitorar e controlar pragas que causam grande prejuízo a agricultura, com o objetivo de preservá-las sem eliminar elas completamente e apenas, manter elas controladas. Ajuda também na parte de tomada de decisões, fazendo os agricultores saberem o momento certo de agir.
-            </p>
-
-        </section>
-
-        <!-- Seção: Prática -->
-        <section class="card">
-
-            <h2>Prática</h2>
-
-            <p>
-                Permite controlar as pragas de forma eficiente e sustentável. Usando estratégias como utilizar agrotóxicos apenas quando necessário, reduzindo assim os prejuízos nas lavouras, protegendo o meio ambiente e contribuindo para a produção de alimentos mais seguros. Dessa maneira, promovendo uma agricultura mais equilibrada e responsável possível.
-            </p>
-
-        </section>
-
-        <!-- Seção: Como começamos -->
-        <section class="card">
-
-            <h2>Como começamos</h2>
-
+        <div class="card">
+            <h2>🚀 Como Começamos</h2>
             <ol>
-
-                <li>
-                    <strong>Identificação da Praga:</strong>
-                    O produtor precisa saber exatamente qual organismo está afetando a plantação. Cada organismo exige uma estratégia diferente.
-                </li>
-
-                <br>
-
-                <li>
-                    <strong>Monitoramento:</strong>
-                    Técnicos vão a campo periodicamente para contar a quantidade de pragas. Isso serve para determinar se a população está crescendo e se realmente vai causar prejuízo.
-                </li>
-
-                <br>
-
-                <li>
-                    <strong>Tomada de Decisão:</strong>
-                    O controle só é ativado quando o número de pragas atinge o chamado "Nível de Controle", o ponto em que o custo do prejuízo gerado supera o custo de aplicar uma medida de controle. Se o número estiver baixa, nada é feito, deixando a própria natureza agir.
-                </li>
-
+                <li><strong>Identificação da Praga:</strong> O produtor precisa saber exatamente qual organismo está afetando a plantação. Cada organismo exige uma estratégia diferente. 🔍</li>
+                <li><strong>Monitoramento:</strong> Técnicos vão a campo periodicamente para contar a quantidade de pragas. Isso serve para determinar se a população está crescendo e se realmente vai causar prejuízo. 📈</li>
+                <li><strong>Tomada de Decisão:</strong> O controle só é ativado quando o número de pragas atinge o chamado "Nível de Controle", o ponto em que o custo do prejuízo gerado supera o custo de aplicar uma medida de controle. Se o número estiver baixo, nada é feito, deixando a própria natureza agir. ⚖️</li>
             </ol>
+        </div>
 
-        </section>
+        <div class="card">
+            <h2>💡 Alguns Métodos</h2>
+            <div class="metodos-grid">
+                <div class="metodo-item">
+                    <strong>Controle Cultural 🌾</strong>
+                    Muda o manejo da plantação para desfavoráveis as pragas.
+                </div>
+                <div class="metodo-item">
+                    <strong>Controle Biológico 🐞</strong>
+                    Usa a própria natureza a favor do produtor, introduzindo inimigos naturais das pragas, como insetos predadores ou microrganismos.
+                </div>
+                <div class="metodo-item">
+                    <strong>Controle Genético 🧬</strong>
+                    Uso de plantas modificadas ou variedades que já nascem naturalmente mais resistentes ao ataque de insetos e doenças.
+                </div>
+                <div class="metodo-item">
+                    <strong>Controle Comportamental 🪤</strong>
+                    Confunde ou atrai os insetos usando o comportamento deles, como armadilhas com feromônios para capturá-los.
+                </div>
+            </div>
+        </div>
 
-        <!-- Seção: Métodos -->
-        <section class="card">
+        <div class="card">
+            <h2>✨ Importância</h2>
+            <p>É importante termos essa opção pois ela permite controlar as pragas, ao invés de utilizar agrotóxicos como a primeira opção. Tem um conjunto de técnicas para escolher a certa para cada situação. Fazendo com que dessa maneira o ecossistema seja preservado, protegendo os insetos benéficos. 🐝</p>
+        </div>
 
-            <h2>Alguns métodos</h2>
-
-            <ul>
-
-                <li><strong>Controle Cultural:</strong> Muda o manejo da plantação para desfavoráveis as pragas.</li>
-
-                <li><strong>Controle Biológico:</strong> Usa a própria natureza a favor do produtor, introduzindo inimigos naturais das pragas, como insetos predadores ou microrganismos.</li>
-
-                <li><strong>Controle Genético:</strong> Uso de plantas modificadas ou variedades que já nascem naturalmente mais resistentes ao ataque de insetos e doenças.</li>
-
-                <li><strong>Controle Comportamental:</strong> Confunde ou atrai os insetos usando o comportamento deles, como armadilhas com feromônios para capturá-los.</li>
-
-            </ul>
-
-        </section>
-
-        <!-- Seção: Importância -->
-        <section class="card">
-
-            <h2>Importância</h2>
-
-            <p>
-                É importante termos essa opção pois ela permite controlar as pragas, ao invés de utilizar agrotóxicos como a primeira opção. Tem um conjunto de técnicas para escolher a certa para cada situação. Fazendo com que dessa maneira o ecossistema seja preservado, protegendo os insetos benéficos.
-            </p>
-
-        </section>
-
-        <!-- Chat de interação -->
-        <section class="card">
-
-            <h2>💬 Tire sua dúvida</h2>
-
-            <p>
-                Escreva sua dúvida sobre o Manejo Integrado de Pragas:
-            </p>
-
-            <textarea
-                id="pergunta"
-                rows="5"
-                placeholder="Ex.: Os organismos não estão sumindo..."></textarea>
-
-            <br><br>
-
-            <button onclick="responder()">
-                Enviar pergunta
-            </button>
-
-            <p id="resposta"></p>
-
-        </section>
-
-        <!-- Acessibilidade -->
-        <section class="card">
-
-            <h2>♿ Acessibilidade</h2>
-
-            <p>Escolha uma opção para alterar o tamanho do texto:</p>
-
-            <button onclick="aumentarFonte()">A+</button>
-
-            <button onclick="diminuirFonte()">A-</button>
-
-        </section>
-
+        <div class="card">
+            <h2>💬 Central de Ajuda Interativa do MIP</h2>
+            <p>Selecione uma dúvida comum de campo para receber orientações automáticas baseadas em métodos alternativos do MIP:</p>
+            
+            <div class="chat-container">
+                <div class="chat-window" id="chatWindow">
+                    <div class="msg bot">Olá! Sou o assistente do Projeto MIP. Escolha uma situação de campo abaixo para analisarmos juntos! 👩‍🌾</div>
+                </div>
+                <div class="chat-input-area">
+                    <select id="chatSelect">
+                        <option value="">-- Selecione uma dúvida ou problema --</option>
+                        <option value="p1">"Apliquei um método cultural mas os organismos ruins ainda não estão sumindo da lavoura."</option>
+                        <option value="p2">"O monitoramento indicou alta de lagartas, mas não quero usar químicos de cara."</option>
+                        <option value="p3">"Como posso atrair e confundir os insetos sem precisar gastar com veneno?"</option>
+                    </select>
+                    <button class="btn-send" onclick="enviarMensagem()">Enviar 📩</button>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <!-- Rodapé -->
     <footer>
-
-        <h3>Referências Bibliográficas</h3>
-
-        <p>
-            Escrito por Ana Julia Ramos Beltrami.
-        </p>
-
+        <p>Layout e Desenvolvimento Criados com ❤️ para o Agrinho 2026</p>
+        <div class="refs">
+            <p>✍️ <strong>Referências Bibliográficas:</strong> Textos originais elaborados por <em>Ana Julia Ramos Beltrami</em>.</p>
+        </div>
     </footer>
 
-    <!-- Arquivo JavaScript -->
-    <script src="script.js"></script>
+    <script>
+        // 1. Comando de Acessibilidade (Aumentar/Diminuir Letra)
+        let tamanhoAtual = 100;
 
+        function alterarFonte(direcao) {
+            tamanhoAtual += (direcao * 10);
+            if (tamanhoAtual < 80) tamanhoAtual = 80;
+            if (tamanhoAtual > 150) tamanhoAtual = 150;
+            document.body.style.fontSize = tamanhoAtual + '%';
+        }
+
+        function resetarFonte() {
+            tamanhoAtual = 100;
+            document.body.style.fontSize = '100%';
+        }
+
+        // 2. Chat de Interação Automatizado
+        function enviarMensagem() {
+            const select = document.getElementById('chatSelect');
+            const chatWindow = document.getElementById('chatWindow');
+            const valor = select.value;
+            
+            if (!valor) return;
+
+            const textoUsuario = select.options[select.selectedIndex].text;
+
+            // Mensagem do usuário
+            const msgUser = document.createElement('div');
+            msgUser.className = 'msg user';
+            msgUser.innerText = textoUsuario;
+            chatWindow.appendChild(msgUser);
+
+            // Respostas sugeridas mudando o método proposto
+            let respostaBot = "";
+            if (valor === "p1") {
+                respostaBot = "⚠️ Se o Controle Cultural sozinho não fez os organismos sumirem, não desanime! O MIP propõe combinar as estratégias. Sugiro aplicar agora o CONTROLE BIOLÓGICO 🐞: introduza inimigos naturais (como insetos predadores ou microrganismos) para equilibrar o ecossistema e conter as pragas de forma limpa!";
+            } else if (valor === "p2") {
+                respostaBot = "🛡️ Excelente decisão! Para conter as lagartas de forma sustentável, use o CONTROLE GENÉTICO 🧬 escolhendo cultivares resistentes na próxima safra, ou aplique bioinsumos específicos que atuam apenas na praga sem agredir o meio ambiente.";
+            } else if (valor === "p3") {
+                respostaBot = "🪤 Para essa situação, a melhor alternativa é o CONTROLE COMPORTAMENTAL! Você pode instalar armadilhas com feromônios específicos na lavoura. Isso atrai e captura os insetos usando o próprio comportamento deles, sem veneno.";
+            }
+
+            // Simulação de resposta com leve atraso
+            setTimeout(() => {
+                const msgBot = document.createElement('div');
+                msgBot.className = 'msg bot';
+                msgBot.innerText = respostaBot;
+                chatWindow.appendChild(msgBot);
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }, 400);
+
+            select.value = "";
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+    </script>
 </body>
-
 </html>
-
-/* ===========================
-   PROJETO MIP
-   Desenvolvido por Ana Julia Ramos Beltrami
-=========================== */
-
-/* Fonte do site */
-body{
-    margin:0;
-    padding:0;
-    font-family:'Quicksand', sans-serif;
-    background:linear-gradient(135deg,#b7f7c3,#d7f8ff);
-    color:#234;
-}
-
-/* Cabeçalho */
-header{
-    background:linear-gradient(90deg,#2E8B57,#4FC3F7);
-    color:white;
-    text-align:center;
-    padding:35px;
-    box-shadow:0 5px 15px rgba(0,0,0,.2);
-}
-
-header h1{
-    font-size:45px;
-    margin-bottom:5px;
-}
-
-header h2{
-    font-size:24px;
-    font-weight:500;
-}
-
-/* Conteúdo principal */
-main{
-    width:90%;
-    max-width:1100px;
-    margin:auto;
-    padding:30px 0;
-}
-
-/* Cartões */
-.card{
-    background:white;
-    margin-bottom:30px;
-    padding:25px;
-    border-radius:20px;
-    box-shadow:0 8px 18px rgba(0,0,0,.15);
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-5px);
-}
-
-/* Títulos */
-.card h2{
-    color:#167d5d;
-    border-left:8px solid #4FC3F7;
-    padding-left:10px;
-    margin-bottom:20px;
-}
-
-/* Textos */
-.card p,
-.card li{
-    font-size:18px;
-    line-height:1.8;
-    text-align:justify;
-}
-
-/* Listas */
-ol li,
-ul li{
-    margin-bottom:15px;
-}
-
-/* Área da pergunta */
-textarea{
-    width:100%;
-    height:120px;
-    padding:15px;
-    border-radius:15px;
-    border:2px solid #4FC3F7;
-    resize:none;
-    font-family:'Quicksand', sans-serif;
-    font-size:16px;
-}
-
-/* Botões */
-button{
-    background:#2E8B57;
-    color:white;
-    border:none;
-    padding:12px 25px;
-    border-radius:30px;
-    cursor:pointer;
-    font-family:'Quicksand', sans-serif;
-    font-size:17px;
-    transition:.3s;
-}
-
-button:hover{
-    background:#1f6a45;
-    transform:scale(1.05);
-}
-
-/* Resposta automática */
-#resposta{
-    margin-top:20px;
-    padding:15px;
-    background:#eefdf3;
-    border-left:6px solid #2E8B57;
-    border-radius:10px;
-    font-weight:bold;
-}
-
-/* Rodapé */
-footer{
-    background:#2E8B57;
-    color:white;
-    text-align:center;
-    padding:25px;
-    margin-top:30px;
-}
-
-footer h3{
-    margin-bottom:10px;
-}
-
-/* Responsividade */
-@media(max-width:768px){
-
-header h1{
-    font-size:32px;
-}
-
-header h2{
-    font-size:18px;
-}
-
-.card{
-    padding:20px;
-}
-
-button{
-    width:100%;
-    margin-top:10px;
-}
-
-}
-/* ===========================================
-   PROJETO MIP
-   Desenvolvido por Ana Julia Ramos Beltrami
-   Arquivo JavaScript
-=========================================== */
-
-// Tamanho inicial da fonte
-let tamanhoFonte = 18;
-
-// Aumenta o tamanho da fonte
-function aumentarFonte(){
-
-    tamanhoFonte += 2;
-
-    document.querySelectorAll("p, li").forEach(function(elemento){
-
-        elemento.style.fontSize = tamanhoFonte + "px";
-
-    });
-
-}
-
-// Diminui o tamanho da fonte
-function diminuirFonte(){
-
-    if(tamanhoFonte > 12){
-
-        tamanhoFonte -= 2;
-
-        document.querySelectorAll("p, li").forEach(function(elemento){
-
-            elemento.style.fontSize = tamanhoFonte + "px";
-
-        });
-
-    }
-
-}
-
-// Respostas automáticas do chat
-function responder(){
-
-    let pergunta = document.getElementById("pergunta").value.toLowerCase();
-
-    let resposta = "";
-
-    // Caso 1
-    if(pergunta.includes("organismos") || pergunta.includes("não estão sumindo")){
-
-        resposta = "Uma alternativa é utilizar o Controle Biológico. Esse método utiliza inimigos naturais das pragas, como insetos predadores ou microrganismos. Também é importante fazer um novo monitoramento para verificar se a quantidade de pragas atingiu o nível de controle.";
-
-    }
-
-    // Caso 2
-    else if(pergunta.includes("pragas voltaram")){
-
-        resposta = "Você pode realizar um novo monitoramento da plantação e utilizar o Controle Cultural, modificando o manejo da lavoura para dificultar a sobrevivência das pragas.";
-
-    }
-
-    // Caso 3
-    else if(pergunta.includes("qual método") || pergunta.includes("não sei")){
-
-        resposta = "Primeiro identifique corretamente a praga. Depois faça o monitoramento da lavoura para escolher o método mais adequado, como Controle Cultural, Biológico, Genético ou Comportamental.";
-
-    }
-
-    // Caso 4
-    else if(pergunta.includes("agrotóxico")){
-
-        resposta = "No MIP os agrotóxicos são utilizados apenas quando realmente necessários, reduzindo impactos ao meio ambiente e preservando os insetos benéficos.";
-
-    }
-
-    // Caso 5
-    else if(pergunta.includes("joaninha") || pergunta.includes("abelha")){
-
-        resposta = "Joaninhas e abelhas são insetos benéficos. As joaninhas ajudam no controle natural de algumas pragas e as abelhas são fundamentais para a polinização das plantas.";
-
-    }
-
-    // Caso 6
-    else if(pergunta.includes("controle biológico")){
-
-        resposta = "O Controle Biológico utiliza inimigos naturais das pragas, como insetos predadores, fungos e microrganismos, reduzindo a necessidade de produtos químicos.";
-
-    }
-
-    // Caso 7
-    else if(pergunta.includes("controle cultural")){
-
-        resposta = "O Controle Cultural consiste em modificar o manejo da plantação, tornando o ambiente menos favorável para o desenvolvimento das pragas.";
-
-    }
-
-    // Caso 8
-    else if(pergunta.includes("controle genético")){
-
-        resposta = "O Controle Genético utiliza variedades de plantas naturalmente resistentes ou modificadas para reduzir o ataque de insetos e doenças.";
-
-    }
-
-    // Caso 9
-    else if(pergunta.includes("controle comportamental")){
-
-        resposta = "O Controle Comportamental utiliza armadilhas e feromônios para atrair ou confundir os insetos, reduzindo sua reprodução.";
-
-    }
-
-    // Caso padrão
-    else{
-
-        resposta = "Sua pergunta é muito interessante! Para responder corretamente, primeiro é necessário identificar a praga, fazer o monitoramento e escolher o método de controle mais adequado para a situação.";
-
-    }
-
-    document.getElementById("resposta").innerHTML = resposta;
-
-}
-
