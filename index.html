@@ -333,4 +333,123 @@ button{
 }
 
 }
+/* ===========================================
+   PROJETO MIP
+   Desenvolvido por Ana Julia Ramos Beltrami
+   Arquivo JavaScript
+=========================================== */
+
+// Tamanho inicial da fonte
+let tamanhoFonte = 18;
+
+// Aumenta o tamanho da fonte
+function aumentarFonte(){
+
+    tamanhoFonte += 2;
+
+    document.querySelectorAll("p, li").forEach(function(elemento){
+
+        elemento.style.fontSize = tamanhoFonte + "px";
+
+    });
+
+}
+
+// Diminui o tamanho da fonte
+function diminuirFonte(){
+
+    if(tamanhoFonte > 12){
+
+        tamanhoFonte -= 2;
+
+        document.querySelectorAll("p, li").forEach(function(elemento){
+
+            elemento.style.fontSize = tamanhoFonte + "px";
+
+        });
+
+    }
+
+}
+
+// Respostas automáticas do chat
+function responder(){
+
+    let pergunta = document.getElementById("pergunta").value.toLowerCase();
+
+    let resposta = "";
+
+    // Caso 1
+    if(pergunta.includes("organismos") || pergunta.includes("não estão sumindo")){
+
+        resposta = "Uma alternativa é utilizar o Controle Biológico. Esse método utiliza inimigos naturais das pragas, como insetos predadores ou microrganismos. Também é importante fazer um novo monitoramento para verificar se a quantidade de pragas atingiu o nível de controle.";
+
+    }
+
+    // Caso 2
+    else if(pergunta.includes("pragas voltaram")){
+
+        resposta = "Você pode realizar um novo monitoramento da plantação e utilizar o Controle Cultural, modificando o manejo da lavoura para dificultar a sobrevivência das pragas.";
+
+    }
+
+    // Caso 3
+    else if(pergunta.includes("qual método") || pergunta.includes("não sei")){
+
+        resposta = "Primeiro identifique corretamente a praga. Depois faça o monitoramento da lavoura para escolher o método mais adequado, como Controle Cultural, Biológico, Genético ou Comportamental.";
+
+    }
+
+    // Caso 4
+    else if(pergunta.includes("agrotóxico")){
+
+        resposta = "No MIP os agrotóxicos são utilizados apenas quando realmente necessários, reduzindo impactos ao meio ambiente e preservando os insetos benéficos.";
+
+    }
+
+    // Caso 5
+    else if(pergunta.includes("joaninha") || pergunta.includes("abelha")){
+
+        resposta = "Joaninhas e abelhas são insetos benéficos. As joaninhas ajudam no controle natural de algumas pragas e as abelhas são fundamentais para a polinização das plantas.";
+
+    }
+
+    // Caso 6
+    else if(pergunta.includes("controle biológico")){
+
+        resposta = "O Controle Biológico utiliza inimigos naturais das pragas, como insetos predadores, fungos e microrganismos, reduzindo a necessidade de produtos químicos.";
+
+    }
+
+    // Caso 7
+    else if(pergunta.includes("controle cultural")){
+
+        resposta = "O Controle Cultural consiste em modificar o manejo da plantação, tornando o ambiente menos favorável para o desenvolvimento das pragas.";
+
+    }
+
+    // Caso 8
+    else if(pergunta.includes("controle genético")){
+
+        resposta = "O Controle Genético utiliza variedades de plantas naturalmente resistentes ou modificadas para reduzir o ataque de insetos e doenças.";
+
+    }
+
+    // Caso 9
+    else if(pergunta.includes("controle comportamental")){
+
+        resposta = "O Controle Comportamental utiliza armadilhas e feromônios para atrair ou confundir os insetos, reduzindo sua reprodução.";
+
+    }
+
+    // Caso padrão
+    else{
+
+        resposta = "Sua pergunta é muito interessante! Para responder corretamente, primeiro é necessário identificar a praga, fazer o monitoramento e escolher o método de controle mais adequado para a situação.";
+
+    }
+
+    document.getElementById("resposta").innerHTML = resposta;
+
+}
 
