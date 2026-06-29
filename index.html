@@ -181,3 +181,156 @@
 </body>
 
 </html>
+
+/* ===========================
+   PROJETO MIP
+   Desenvolvido por Ana Julia Ramos Beltrami
+=========================== */
+
+/* Fonte do site */
+body{
+    margin:0;
+    padding:0;
+    font-family:'Quicksand', sans-serif;
+    background:linear-gradient(135deg,#b7f7c3,#d7f8ff);
+    color:#234;
+}
+
+/* Cabeçalho */
+header{
+    background:linear-gradient(90deg,#2E8B57,#4FC3F7);
+    color:white;
+    text-align:center;
+    padding:35px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+header h1{
+    font-size:45px;
+    margin-bottom:5px;
+}
+
+header h2{
+    font-size:24px;
+    font-weight:500;
+}
+
+/* Conteúdo principal */
+main{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:30px 0;
+}
+
+/* Cartões */
+.card{
+    background:white;
+    margin-bottom:30px;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 8px 18px rgba(0,0,0,.15);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+/* Títulos */
+.card h2{
+    color:#167d5d;
+    border-left:8px solid #4FC3F7;
+    padding-left:10px;
+    margin-bottom:20px;
+}
+
+/* Textos */
+.card p,
+.card li{
+    font-size:18px;
+    line-height:1.8;
+    text-align:justify;
+}
+
+/* Listas */
+ol li,
+ul li{
+    margin-bottom:15px;
+}
+
+/* Área da pergunta */
+textarea{
+    width:100%;
+    height:120px;
+    padding:15px;
+    border-radius:15px;
+    border:2px solid #4FC3F7;
+    resize:none;
+    font-family:'Quicksand', sans-serif;
+    font-size:16px;
+}
+
+/* Botões */
+button{
+    background:#2E8B57;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:30px;
+    cursor:pointer;
+    font-family:'Quicksand', sans-serif;
+    font-size:17px;
+    transition:.3s;
+}
+
+button:hover{
+    background:#1f6a45;
+    transform:scale(1.05);
+}
+
+/* Resposta automática */
+#resposta{
+    margin-top:20px;
+    padding:15px;
+    background:#eefdf3;
+    border-left:6px solid #2E8B57;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+/* Rodapé */
+footer{
+    background:#2E8B57;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:30px;
+}
+
+footer h3{
+    margin-bottom:10px;
+}
+
+/* Responsividade */
+@media(max-width:768px){
+
+header h1{
+    font-size:32px;
+}
+
+header h2{
+    font-size:18px;
+}
+
+.card{
+    padding:20px;
+}
+
+button{
+    width:100%;
+    margin-top:10px;
+}
+
+}
+
