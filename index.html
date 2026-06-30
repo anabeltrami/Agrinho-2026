@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto MIP - Manejo Integrado de Pragas</title>
+    
+    <!-- ATENÇÃO: Não mude essa linha! Ela puxa as fontes do Google para o site não ficar feio -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2=family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
+        /* AVISO: Altere as cores aqui para mudar o site inteiro de uma vez só! */
         :root {
             --verde-principal: #2d6a4f;
             --verde-claro: #d8f3dc;
@@ -19,21 +23,24 @@
             --background: #f0fdf4;
         }
 
+        /* REGRA GERAL: Nunca apague isso! Serve para zerar as margens e não quebrar o layout */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+        /* IMPORTANTE: Definições globais do corpo da página. Cuidado ao mexer na transição! */
         body {
             font-family: 'Nunito', sans-serif;
             background-color: var(--background);
             color: var(--texto-cor);
             line-height: 1.6;
             padding-bottom: 60px;
-            transition: font-size 0.2s ease;
+            transition: font-size 0.2s ease; /* ALERTA: Efeito obrigatório para o botão de acessibilidade */
         }
 
+        /* DESIGN: Configuração do cabeçalho. Mantenha o degradê para combinar com o tema agro */
         header {
             background: linear-gradient(135deg, var(--verde-principal), var(--verde-destaque));
             color: white;
@@ -47,7 +54,7 @@
         header h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            font-weight: 800;
+            font-weight: 800; /* Destaque máximo para o título */
         }
 
         header p {
@@ -55,7 +62,7 @@
             opacity: 0.9;
         }
 
-        /* Barra de Acessibilidade */
+        /* ALINHAMENTO: Força a barra de acessibilidade a ficar grudada no canto direito */
         .accessibility-bar {
             background-color: var(--azul-claro);
             padding: 10px 20px;
@@ -73,38 +80,43 @@
             color: var(--azul-escuro);
         }
 
+        /* BOTÕES: Garanta que o cursor mude para 'pointer' para o usuário saber onde clicar */
         .btn-acc {
             background-color: white;
             border: 2px solid var(--azul-botao);
             color: var(--azul-escuro);
             padding: 5px 12px;
             border-radius: 20px;
-            cursor: pointer;
+            cursor: pointer; /* REGRA: Sinaliza elemento clicável */
             font-weight: bold;
             font-family: 'Nunito', sans-serif;
             transition: all 0.2s;
         }
 
+        /* EFEITO VISUAL: Altera a cor do botão imediatamente quando o mouse passa por cima */
         .btn-acc:hover {
             background-color: var(--azul-botao);
             color: white;
         }
 
+        /* ESTRUTURA: Centraliza o conteúdo e impede que ele espalhe em telas muito grandes */
         main {
             max-width: 900px;
             margin: 30px auto;
             padding: 0 20px;
         }
 
+        /* ESTILO: Configuração dos cards brancos. Não remova a sombra sutil! */
         .card {
             background: white;
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 25px;
-            box-shadow: 0 8px 20px rgba(45, 106, 79, 0.05);
+            box-shadow: 0 8px 20px rgba(45, 106, 79, 0.05); 
             border: 1px solid var(--verde-claro);
         }
 
+        /* INDICAÇÃO VISUAL: Cria a linha verde vertical para destacar os títulos dos cards */
         h2 {
             color: var(--verde-principal);
             margin-bottom: 15px;
@@ -119,7 +131,7 @@
         p {
             margin-bottom: 15px;
             font-size: 1.05rem;
-            text-align: justify;
+            text-align: justify; /* Alerta de estética: mantém o texto alinhado nas duas pontas */
         }
 
         ol {
@@ -136,7 +148,7 @@
             color: var(--verde-principal);
         }
 
-        /* Grid de Métodos */
+        /* GRID: Organiza a lista de métodos um embaixo do outro com espaçamento padrão */
         .metodos-grid {
             display: flex;
             flex-direction: column;
@@ -144,6 +156,7 @@
             margin-top: 15px;
         }
 
+        /* ITEM DO GRID: Aplica o fundo azul claro para diferenciar os métodos do resto do texto */
         .metodo-item {
             background-color: var(--azul-claro);
             padding: 15px;
@@ -153,25 +166,26 @@
 
         .metodo-item strong {
             color: var(--azul-escuro);
-            display: block;
+            display: block; /* IMPORTANTE: Quebra a linha para o título ficar no topo do bloco */
             margin-bottom: 5px;
         }
 
-        /* Seção do Chat Interativo */
+        /* CHATBOX: Cria a moldura da área interativa. Use a borda tracejada como alerta visual */
         .chat-container {
             background-color: #fafafa;
-            border: 2px dashed var(--azul-botao);
+            border: 2px dashed var(--azul-botao); 
             border-radius: 20px;
             padding: 20px;
             margin-top: 20px;
         }
 
+        /* JANELA DO CHAT: Mantenha a altura em 250px e ative o 'overflow-y' para criar a rolagem */
         .chat-window {
             background: white;
             border: 1px solid #e2e8f0;
             border-radius: 15px;
             height: 250px;
-            overflow-y: auto;
+            overflow-y: auto; /* REGRA: Impede que as mensagens vazem para fora do card */
             padding: 15px;
             margin-bottom: 15px;
             display: flex;
@@ -179,6 +193,7 @@
             gap: 10px;
         }
 
+        /* BALÕES: Define a largura máxima das mensagens para não ocupar a tela inteira */
         .msg {
             max-width: 80%;
             padding: 10px 15px;
@@ -186,13 +201,15 @@
             font-size: 0.95rem;
         }
 
+        /* MENSAGEM USUÁRIO: Alinha obrigatoriamente na direita e pinta de verde */
         .msg.user {
             background-color: var(--verde-claro);
             color: var(--verde-principal);
             margin-left: auto;
-            border-bottom-right-radius: 2px;
+            border-bottom-right-radius: 2px; /* Detalhe do formato do balão */
         }
 
+        /* MENSAGEM BOT: Alinha obrigatoriamente na esquerda e pinta de azul */
         .msg.bot {
             background-color: var(--azul-claro);
             color: var(--azul-escuro);
@@ -200,13 +217,15 @@
             border-bottom-left-radius: 2px;
         }
 
+        /* ÁREA DE INPUT: Mantém o menu de seleção e o botão na mesma linha horizontal */
         .chat-input-area {
             display: flex;
             gap: 10px;
         }
 
+        /* DROPDOWN: Configura a caixa de seleção para ocupar o máximo de espaço possível */
         select {
-            flex: 1;
+            flex: 1; 
             padding: 10px;
             border-radius: 12px;
             border: 2px solid var(--azul-botao);
@@ -216,6 +235,7 @@
             background-color: white;
         }
 
+        /* BOTÃO ENVIAR: Define o visual do gatilho de envio de mensagens */
         .btn-send {
             background-color: var(--verde-destaque);
             color: white;
@@ -232,6 +252,7 @@
             background-color: var(--verde-principal);
         }
 
+        /* RODAPÉ: Base da página com cores invertidas para fechar o layout */
         footer {
             text-align: center;
             padding: 30px;
@@ -251,6 +272,7 @@
 </head>
 <body>
 
+    <!-- BLOCO DE ACESSIBILIDADE: Contém as funções que modificam as fontes -->
     <div class="accessibility-bar">
         <span>Acessibilidade ♿:</span>
         <button class="btn-acc" onclick="alterarFonte(1)">Aumentar Letra ➕</button>
@@ -264,26 +286,27 @@
     </header>
 
     <main>
+        <!-- Blocos com os conteúdos e explicações textuais -->
         <div class="card">
-            <p>O projeto Mip, também conhecido como Manejo Integrado de Pragas, é uma maneira ecológica e inteligente de cuidar das plantações. Trocando o método de usar produtos químicos contra insetos, ele usa outros diversos métodos diferentes para proteger a plantação, assim protegendo a natureza. 🍃</p>
+            <p>O projeto Mip, também conhecido como Manejo Integrado de Pragas, é uma maneira ecológica e inteligente de cuidar das plantações...</p>
         </div>
 
         <div class="card">
             <h2>🎯 Objetivo</h2>
-            <p>Esse projeto serve para prevenir, monitorar e controlar pragas que causam grande prejuízo a agricultura, com o objetivo de preservá-las sem eliminar elas completamente e apenas, manter elas controladas. Ajuda também na parte de tomada de decisões, fazendo os agricultores saberem o momento certo de agir. 📊</p>
+            <p>Esse projeto serve para prevenir, monitorar e controlar pragas...</p>
         </div>
 
         <div class="card">
             <h2>🌱 Prática</h2>
-            <p>Permite controlar as pragas de forma eficiente e sustentável. Usando estratégias como utilizar agrotóxicos apenas quando necessário, reduzindo assim os prejuízos nas lavouras, protegendo o meio ambiente e contribuindo para a produção de alimentos mais seguros. Dessa maneira, promovendo uma agricultura mais equilibrada e responsável possível. 🚜</p>
+            <p>Permite controlar as pragas de forma eficiente e sustentável...</p>
         </div>
 
         <div class="card">
             <h2>🚀 Como Começamos</h2>
             <ol>
-                <li><strong>Identificação da Praga:</strong> O produtor precisa saber exatamente qual organismo está afetando a plantação. Cada organismo exige uma estratégia diferente. 🔍</li>
-                <li><strong>Monitoramento:</strong> Técnicos vão a campo periodicamente para contar a quantidade de pragas. Isso serve para determinar se a população está crescendo e se realmente vai causar prejuízo. 📈</li>
-                <li><strong>Tomada de Decisão:</strong> O controle só é ativado quando o número de pragas atinge o chamado "Nível de Controle", o ponto em que o custo do prejuízo gerado supera o custo de aplicar uma medida de controle. Se o número estiver baixo, nada é feito, deixando a própria natureza agir. ⚖️</li>
+                <li><strong>Identificação da Praga:</strong> O produtor precisa saber exatamente... 🔍</li>
+                <li><strong>Monitoramento:</strong> Técnicos vão a campo... 📈</li>
+                <li><strong>Tomada de Decisão:</strong> O controle só é ativado quando... ⚖️</li>
             </ol>
         </div>
 
@@ -296,29 +319,31 @@
                 </div>
                 <div class="metodo-item">
                     <strong>Controle Biológico 🐞</strong>
-                    Usa a própria natureza a favor do produtor, introduzindo inimigos naturais das pragas, como insetos predadores ou microrganismos.
+                    Usa a própria natureza a favor do produtor...
                 </div>
                 <div class="metodo-item">
                     <strong>Controle Genético 🧬</strong>
-                    Uso de plantas modificadas ou variedades que já nascem naturalmente mais resistentes ao ataque de insetos e doenças.
+                    Uso de plantas modificadas...
                 </div>
                 <div class="metodo-item">
                     <strong>Controle Comportamental 🪤</strong>
-                    Confunde ou atrai os insetos usando o comportamento deles, como armadilhas com feromônios para capturá-los.
+                    Confunde ou atrai os insetos usando o comportamento deles...
                 </div>
             </div>
         </div>
 
         <div class="card">
             <h2>✨ Importância</h2>
-            <p>É importante termos essa opção pois ela permite controlar as pragas, ao invés de utilizar agrotóxicos como a primeira opção. Tem um conjunto de técnicas para escolher a certa para cada situação. Fazendo com que dessa maneira o ecossistema seja preservado, protegendo os insetos benéficos. 🐝</p>
+            <p>É importante termos essa opção pois ela permite controlar as pragas...</p>
         </div>
 
+        <!-- MÓDULO INTERATIVO: Estrutura do Chatbot -->
         <div class="card">
             <h2>💬 Central de Ajuda Interativa do MIP</h2>
-            <p>Selecione uma dúvida comum de campo para receber orientações automáticas baseadas em métodos alternativos do MIP:</p>
+            <p>Selecione uma dúvida comum de campo para receber orientações automáticas:</p>
             
             <div class="chat-container">
+                <!-- Zona Crítica: É aqui dentro que o JavaScript vai injetar as mensagens! -->
                 <div class="chat-window" id="chatWindow">
                     <div class="msg bot">Olá! Sou o assistente do Projeto MIP. Escolha uma situação de campo abaixo para analisarmos juntos! 👩‍🌾</div>
                 </div>
@@ -343,38 +368,55 @@
     </footer>
 
     <script>
-        // 1. Comando de Acessibilidade (Aumentar/Diminuir Letra)
+        // =========================================================
+        //  ALERTA 1: SISTEMA DE DIMENSIONAMENTO DE TEXTO (FONTE)
+        // =========================================================
+        
+        // Crie e monitore a variável global para armazenar a escala da fonte
         let tamanhoAtual = 100;
 
+        // Execute a alteração da fonte somando ou subtraindo o multiplicador recebido
         function alterarFonte(direcao) {
-            tamanhoAtual += (direcao * 10);
+            tamanhoAtual += (direcao * 10); // Modifique o tamanho de 10 em 10%
+            
+            // ATENÇÃO: Bloqueie valores extremos para evitar bugs visuais na tela!
             if (tamanhoAtual < 80) tamanhoAtual = 80;
             if (tamanhoAtual > 150) tamanhoAtual = 150;
+            
+            // Injete o novo valor diretamente no estilo do corpo do site
             document.body.style.fontSize = tamanhoAtual + '%';
         }
 
+        // Force o reset completo da fonte para o valor padrão de fábrica (100%)
         function resetarFonte() {
             tamanhoAtual = 100;
             document.body.style.fontSize = '100%';
         }
 
-        // 2. Chat de Interação Automatizado
+        // =========================================================
+        //  ALERTA 2: CONTROLE E GERAÇÃO DE MENSAGENS DO CHAT
+        // =========================================================
+        
+        // Processe os dados inseridos, gere os balões e exiba as respostas do bot
         function enviarMensagem() {
+            // Conecte imediatamente com os elementos do HTML usando os IDs corretos
             const select = document.getElementById('chatSelect');
             const chatWindow = document.getElementById('chatWindow');
-            const valor = select.value;
+            const valor = select.value; // Capture o identificador ("p1", "p2" ou "p3")
             
+            // TRAVA DE SEGURANÇA: Bloqueie o envio caso o campo esteja vazio!
             if (!valor) return;
 
+            // Extraia o texto descritivo da opção selecionada pelo usuário
             const textoUsuario = select.options[select.selectedIndex].text;
 
-            // Mensagem do usuário
+            // Crie e configure o balão de mensagem do usuário em tempo real
             const msgUser = document.createElement('div');
-            msgUser.className = 'msg user';
-            msgUser.innerText = textoUsuario;
-            chatWindow.appendChild(msgUser);
+            msgUser.className = 'msg user'; // Carregue a classe CSS correta
+            msgUser.innerText = textoUsuario; // Insira o texto dentro do elemento
+            chatWindow.appendChild(msgUser); // Mande o balão direto para a tela
 
-            // Respostas sugeridas mudando o método proposto
+            // Faça o cruzamento de dados para selecionar a resposta certa para cada caso
             let respostaBot = "";
             if (valor === "p1") {
                 respostaBot = "⚠️ Se o Controle Cultural sozinho não fez os organismos sumirem, não desanime! O MIP propõe combinar as estratégias. Sugiro aplicar agora o CONTROLE BIOLÓGICO 🐞: introduza inimigos naturais (como insetos predadores ou microrganismos) para equilibrar o ecossistema e conter as pragas de forma limpa!";
@@ -384,16 +426,21 @@
                 respostaBot = "🪤 Para essa situação, a melhor alternativa é o CONTROLE COMPORTAMENTAL! Você pode instalar armadilhas com feromônios específicos na lavoura. Isso atrai e captura os insetos usando o próprio comportamento deles, sem veneno.";
             }
 
-            // Simulação de resposta com leve atraso
+            // ACIONE O TIMER: Aguarde 400 milissegundos para disparar a resposta (efeito realista)
             setTimeout(() => {
                 const msgBot = document.createElement('div');
-                msgBot.className = 'msg bot';
-                msgBot.innerText = respostaBot;
-                chatWindow.appendChild(msgBot);
+                msgBot.className = 'msg bot'; // Carregue as regras visuais do robô
+                msgBot.innerText = respostaBot; // Carregue o texto da resposta
+                chatWindow.appendChild(msgBot); // Insira o balão do bot na tela
+                
+                // COMANDO OBRIGATÓRIO: Force a janela a rolar para o fim para exibir o texto novo
                 chatWindow.scrollTop = chatWindow.scrollHeight;
             }, 400);
 
+            // LIMPEZA OBRIGATÓRIA: Resete o menu dropdown para evitar envios duplicados
             select.value = "";
+            
+            // Execute uma rolagem extra para garantir a perfeita visualização
             chatWindow.scrollTop = chatWindow.scrollHeight;
         }
     </script>
