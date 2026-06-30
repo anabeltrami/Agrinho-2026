@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto MIP - Manejo Integrado de Pragas</title>
     
-    <!-- CONSERTADO: Puxando as fontes do Google sem tags duplicadas -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* AVISO: Configuração da raiz do site. O tamanho padrão do navegador é 16px */
+        /* Configuração da raiz do site.*/
         :root {
             --verde-principal: #2d6a4f;
             --verde-claro: #d8f3dc;
@@ -23,14 +22,14 @@
             --background: #f0fdf4;
         }
 
-        /* REGRA GERAL: Reseta margens para evitar quebras de layout */
+        /* REGRA GERAL */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        /* IMPORTANTE: O efeito de transição foi movido para o HTML para suavizar o site todo */
+        /* Efeito de transição*/
         html {
             font-size: 16px; /* Começa com o padrão de 16px */
             transition: font-size 0.2s ease;
@@ -66,7 +65,7 @@
             opacity: 0.9;
         }
 
-        /* ALINHAMENTO: Força a barra de acessibilidade para a direita */
+        /* ALINHAMENTO*/
         .accessibility-bar {
             background-color: var(--azul-claro);
             padding: 10px 20px;
@@ -84,7 +83,7 @@
             color: var(--azul-escuro);
         }
 
-        /* BOTÕES: Cursor em estilo pointer para indicar clique */
+        /* BOTÕES*/
         .btn-acc {
             background-color: white;
             border: 2px solid var(--azul-botao);
@@ -102,14 +101,14 @@
             color: white;
         }
 
-        /* ESTRUTURA: Centraliza o conteúdo principal */
+        /* ESTRUTURA*/
         main {
             max-width: 900px;
             margin: 30px auto;
             padding: 0 20px;
         }
 
-        /* ESTILO: Configuração dos cards brancos */
+        /* ESTILO*/
         .card {
             background: white;
             border-radius: 20px;
@@ -150,7 +149,7 @@
             color: var(--verde-principal);
         }
 
-        /* GRID: Organiza os métodos */
+        /* Organiza os métodos */
         .metodos-grid {
             display: flex;
             flex-direction: column;
@@ -171,7 +170,7 @@
             margin-bottom: 5px;
         }
 
-        /* CHATBOX: Moldura da área interativa */
+        /* Área interativa */
         .chat-container {
             background-color: #fafafa;
             border: 2px dashed var(--azul-botao); 
@@ -359,36 +358,30 @@
     </footer>
 
     <script>
-        // =========================================================
-        //  ALERTA 1: SISTEMA DE SUPER AUMENTO EXAGERADO (HTML)
-        // =========================================================
+       
+        //  SISTEMA DE SUPER AUMENTO (HTML)
         
-        // Define o tamanho base inicial em 16 pixels
         let tamanhoBaseEmPx = 16;
 
-        // Altera o tamanho somando ou subtraindo pixels diretamente na raiz (html)
         function alterarFonte(direcao) {
-            // EXAGERADO: Multiplica por 4 para pular de 4px em 4px a cada clique!
+            
             let novoTamanho = tamanhoBaseEmPx + (direcao * 4); 
             
-            // ATENÇÃO: Limite máximo esticado para 40px (Fonte Gigante!)
             if (novoTamanho >= 12 && novoTamanho <= 40) {
                 tamanhoBaseEmPx = novoTamanho; 
                 
-                // Aplica a alteração gigante diretamente na tag <html> da página
                 document.documentElement.style.fontSize = tamanhoBaseEmPx + 'px';
             }
         }
 
-        // Reseta o tamanho da fonte da raiz para os 16px originais
         function resetarFonte() {
             tamanhoBaseEmPx = 16;
             document.documentElement.style.fontSize = '16px';
         }
 
-        // =========================================================
-        //  ALERTA 2: MECÂNICA DO CHATBOX
-        // =========================================================
+    
+        //  MECÂNICA DO CHATBOX
+        
         function enviarMensagem() {
             const select = document.getElementById('chatSelect');
             const chatWindow = document.getElementById('chatWindow');
