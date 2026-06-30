@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto MIP - Manejo Integrado de Pragas</title>
     
-    <!-- CONSERTADO: Corrigida a tag que estava duplicada para carregar as fontes do Google perfeitamente -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* AVISO: Altere as cores aqui para mudar o site inteiro de uma vez só! */
+        /* AVISO: Configuração da raiz do site. O tamanho padrão do navegador é 16px */
         :root {
             --verde-principal: #2d6a4f;
             --verde-claro: #d8f3dc;
@@ -23,24 +22,28 @@
             --background: #f0fdf4;
         }
 
-        /* REGRA GERAL: Nunca apague isso! Serve para zerar as margens e não quebrar o layout */
+        /* REGRA GERAL: Reseta margens para evitar quebras de layout */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        /* IMPORTANTE: Definições globais do corpo da página. Cuidado ao mexer na transição! */
+        /* IMPORTANTE: O efeito de transição foi movido para o HTML para suavizar o site todo */
+        html {
+            font-size: 16px; /* Começa com o padrão de 16px */
+            transition: font-size 0.2s ease;
+        }
+
         body {
             font-family: 'Nunito', sans-serif;
             background-color: var(--background);
             color: var(--texto-cor);
             line-height: 1.6;
             padding-bottom: 60px;
-            transition: font-size 0.2s ease; /* ALERTA: Efeito obrigatório para o botão de acessibilidade */
         }
 
-        /* DESIGN: Configuração do cabeçalho. Mantenha o degradê para combinar com o tema agro */
+        /* DESIGN: Configuração do cabeçalho */
         header {
             background: linear-gradient(135deg, var(--verde-principal), var(--verde-destaque));
             color: white;
@@ -52,9 +55,9 @@
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.5rem; /* Baseado no tamanho da raiz */
             margin-bottom: 10px;
-            font-weight: 800; /* Destaque máximo para o título */
+            font-weight: 800;
         }
 
         header p {
@@ -62,7 +65,7 @@
             opacity: 0.9;
         }
 
-        /* ALINHAMENTO: Força a barra de acessibilidade a ficar grudada no canto direito */
+        /* ALINHAMENTO: Força a barra de acessibilidade para a direita */
         .accessibility-bar {
             background-color: var(--azul-claro);
             padding: 10px 20px;
@@ -80,33 +83,32 @@
             color: var(--azul-escuro);
         }
 
-        /* BOTÕES: Garanta que o cursor mude para 'pointer' para o usuário saber onde clicar */
+        /* BOTÕES: Cursor em estilo pointer para indicar clique */
         .btn-acc {
             background-color: white;
             border: 2px solid var(--azul-botao);
             color: var(--azul-escuro);
             padding: 5px 12px;
             border-radius: 20px;
-            cursor: pointer; /* REGRA: Sinaliza elemento clicável */
+            cursor: pointer;
             font-weight: bold;
             font-family: 'Nunito', sans-serif;
             transition: all 0.2s;
         }
 
-        /* EFEITO VISUAL: Altera a cor do botão imediatamente quando o mouse passa por cima */
         .btn-acc:hover {
             background-color: var(--azul-botao);
             color: white;
         }
 
-        /* ESTRUTURA: Centraliza o conteúdo e impede que ele espalhe em telas muito grandes */
+        /* ESTRUTURA: Centraliza o conteúdo principal */
         main {
             max-width: 900px;
             margin: 30px auto;
             padding: 0 20px;
         }
 
-        /* ESTILO: Configuração dos cards brancos. Não remova a sombra sutil! */
+        /* ESTILO: Configuração dos cards brancos */
         .card {
             background: white;
             border-radius: 20px;
@@ -116,7 +118,6 @@
             border: 1px solid var(--verde-claro);
         }
 
-        /* INDICAÇÃO VISUAL: Cria a linha verde vertical para destacar os títulos dos cards */
         h2 {
             color: var(--verde-principal);
             margin-bottom: 15px;
@@ -131,7 +132,7 @@
         p {
             margin-bottom: 15px;
             font-size: 1.05rem;
-            text-align: justify; /* Alerta de estética: mantém o texto alinhado nas duas pontas */
+            text-align: justify;
         }
 
         ol {
@@ -148,7 +149,7 @@
             color: var(--verde-principal);
         }
 
-        /* GRID: Organiza a lista de métodos um embaixo do outro com espaçamento padrão */
+        /* GRID: Organiza os métodos */
         .metodos-grid {
             display: flex;
             flex-direction: column;
@@ -156,7 +157,6 @@
             margin-top: 15px;
         }
 
-        /* ITEM DO GRID: Aplica o fundo azul claro para diferenciar os métodos do resto do texto */
         .metodo-item {
             background-color: var(--azul-claro);
             padding: 15px;
@@ -166,11 +166,11 @@
 
         .metodo-item strong {
             color: var(--azul-escuro);
-            display: block; /* IMPORTANTE: Quebra a linha para o título ficar no topo do bloco */
+            display: block;
             margin-bottom: 5px;
         }
 
-        /* CHATBOX: Cria a moldura da área interativa. Use a borda tracejada como alerta visual */
+        /* CHATBOX: Moldura da área interativa */
         .chat-container {
             background-color: #fafafa;
             border: 2px dashed var(--azul-botao); 
@@ -179,13 +179,13 @@
             margin-top: 20px;
         }
 
-        /* JANELA DO CHAT: Mantenha a altura em 250px e ative o 'overflow-y' para criar a rolagem */
+        /* JANELA DO CHAT */
         .chat-window {
             background: white;
             border: 1px solid #e2e8f0;
             border-radius: 15px;
             height: 250px;
-            overflow-y: auto; /* REGRA: Impede que as mensagens vazem para fora do card */
+            overflow-y: auto;
             padding: 15px;
             margin-bottom: 15px;
             display: flex;
@@ -193,7 +193,7 @@
             gap: 10px;
         }
 
-        /* BALÕES: Define a largura máxima das mensagens para não ocupar a tela inteira */
+        /* BALÕES DE MENSAGEM */
         .msg {
             max-width: 80%;
             padding: 10px 15px;
@@ -201,249 +201,5 @@
             font-size: 0.95rem;
         }
 
-        /* MENSAGEM USUÁRIO: Alinha obrigatoriamente na direita e pinta de verde */
         .msg.user {
-            background-color: var(--verde-claro);
-            color: var(--verde-principal);
-            margin-left: auto;
-            border-bottom-right-radius: 2px; /* Detalhe do formato do balão */
-        }
-
-        /* MENSAGEM BOT: Alinha obrigatoriamente na esquerda e pinta de azul */
-        .msg.bot {
-            background-color: var(--azul-claro);
-            color: var(--azul-escuro);
-            margin-right: auto;
-            border-bottom-left-radius: 2px;
-        }
-
-        /* ÁREA DE INPUT: Mantém o menu de seleção e o botão na mesma linha horizontal */
-        .chat-input-area {
-            display: flex;
-            gap: 10px;
-        }
-
-        /* DROPDOWN: Configura a caixa de seleção para ocupar o máximo de espaço possível */
-        select {
-            flex: 1; 
-            padding: 10px;
-            border-radius: 12px;
-            border: 2px solid var(--azul-botao);
-            font-family: 'Nunito', sans-serif;
-            font-size: 1rem;
-            outline: none;
-            background-color: white;
-        }
-
-        /* BOTÃO ENVIAR: Define o visual do gatilho de envio de mensagens */
-        .btn-send {
-            background-color: var(--verde-destaque);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: bold;
-            font-family: 'Nunito', sans-serif;
-            transition: background 0.2s;
-        }
-
-        .btn-send:hover {
-            background-color: var(--verde-principal);
-        }
-
-        /* RODAPÉ: Base da página com cores invertidas para fechar o layout */
-        footer {
-            text-align: center;
-            padding: 30px;
-            background-color: var(--verde-principal);
-            color: white;
-            margin-top: 30px;
-            border-top-left-radius: 30px;
-            border-top-right-radius: 30px;
-        }
-
-        .refs {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            margin-top: 10px;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- BLOCO DE ACESSIBILIDADE: Contém as funções que modificam as fontes -->
-    <div class="accessibility-bar">
-        <span>Acessibilidade ♿:</span>
-        <button class="btn-acc" onclick="alterarFonte(1)">Aumentar Letra ➕</button>
-        <button class="btn-acc" onclick="alterarFonte(-1)">Diminuir Letra ➖</button>
-        <button class="btn-acc" onclick="resetarFonte()">Padrão 🔄</button>
-    </div>
-
-    <header>
-        <h1>Projeto MIP 🌾</h1>
-        <p>Manejo Integrado de Pragas</p>
-    </header>
-
-    <main>
-        <!-- Blocos com os conteúdos e explicações textuais -->
-        <div class="card">
-            <p>O projeto Mip, também conhecido como Manejo Integrado de Pragas, é uma maneira ecológica e inteligente de cuidar das plantações...</p>
-        </div>
-
-        <div class="card">
-            <h2>🎯 Objetivo</h2>
-            <p>Esse projeto serve para prevenir, monitorar e controlar pragas...</p>
-        </div>
-
-        <div class="card">
-            <h2>🌱 Prática</h2>
-            <p>Permite controlar as pragas de forma eficiente e sustentável...</p>
-        </div>
-
-        <div class="card">
-            <h2>🚀 Como Começamos</h2>
-            <ol>
-                <li><strong>Identificação da Praga:</strong> O produtor precisa saber exatamente... 🔍</li>
-                <li><strong>Monitoramento:</strong> Técnicos vão a campo... 📈</li>
-                <li><strong>Tomada de Decisão:</strong> O controle só é ativado quando... ⚖️</li>
-            </ol>
-        </div>
-
-        <div class="card">
-            <h2>💡 Alguns Métodos</h2>
-            <div class="metodos-grid">
-                <div class="metodo-item">
-                    <strong>Controle Cultural 🌾</strong>
-                    Muda o manejo da plantação para desfavoráveis as pragas.
-                </div>
-                <div class="metodo-item">
-                    <strong>Controle Biológico 🐞</strong>
-                    Usa a própria natureza a favor do produtor...
-                </div>
-                <div class="metodo-item">
-                    <strong>Controle Genético 🧬</strong>
-                    Uso de plantas modificadas...
-                </div>
-                <div class="metodo-item">
-                    <strong>Controle Comportamental 🪤</strong>
-                    Confunde ou atrai os insetos usando o comportamento deles...
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>✨ Importância</h2>
-            <p>É importante termos essa opção pois ela permite controlar as pragas...</p>
-        </div>
-
-        <!-- MÓDULO INTERATIVO: Estrutura do Chatbot -->
-        <div class="card">
-            <h2>💬 Central de Ajuda Interativa do MIP</h2>
-            <p>Selecione uma dúvida comum de campo para receber orientações automáticas:</p>
-            
-            <div class="chat-container">
-                <!-- Zona Crítica: É aqui dentro que o JavaScript vai injetar as mensagens! -->
-                <div class="chat-window" id="chatWindow">
-                    <div class="msg bot">Olá! Sou o assistente do Projeto MIP. Escolha uma situação de campo abaixo para analisarmos juntos! 👩‍🌾</div>
-                </div>
-                <div class="chat-input-area">
-                    <select id="chatSelect">
-                        <option value="">-- Selecione uma dúvida ou problema --</option>
-                        <option value="p1">"Apliquei um método cultural mas os organismos ruins ainda não estão sumindo da lavoura."</option>
-                        <option value="p2">"O monitoramento indicou alta de lagartas, mas não quero usar químicos de cara."</option>
-                        <option value="p3">"Como posso atrair e confundir os insetos sem precisar gastar com veneno?"</option>
-                    </select>
-                    <button class="btn-send" onclick="enviarMensagem()">Enviar 📩</button>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <p>Layout e Desenvolvimento criados para o Agrinho 2026</p>
-        <div class="refs">
-            <p>✍️ <strong>Referências Bibliográficas:</strong> Textos originais elaborados por <em>Ana Julia Ramos Beltrami</em>.</p>
-        </div>
-    </footer>
-
-    <script>
-        // =========================================================
-        //  ALERTA 1: SISTEMA DE DIMENSIONAMENTO DE TEXTO (FONTE)
-        // =========================================================
-        
-        // Crie e monitore a variável global para armazenar a escala da fonte (começa em 100%)
-        let tamanhoAtual = 100;
-
-        // CONSERTADO: Corrigida a lógica matemática que bloqueava o cálculo!
-        function alterarFonte(direcao) {
-            // Se direcao for 1, soma 10. Se for -1, subtrai 10.
-            let novoTamanho = tamanhoAtual + (direcao * 10); 
-            
-            // ATENÇÃO: Verifique os limites ANTES de aplicar o valor definitivo
-            if (novoTamanho >= 80 && novoTamanho <= 150) {
-                tamanhoAtual = novoTamanho; // Salva o tamanho atualizado se estiver no limite seguro
-                // Injete o novo valor diretamente no estilo do corpo do site
-                document.body.style.fontSize = tamanhoAtual + '%';
-            }
-        }
-
-        // Force o reset completo da fonte para o valor padrão de fábrica (100%)
-        function resetarFonte() {
-            tamanhoAtual = 100;
-            document.body.style.fontSize = '100%';
-        }
-
-        // =========================================================
-        //  ALERTA 2: CONTROLE E GERAÇÃO DE MENSAGENS DO CHAT
-        // =========================================================
-        
-        // Processe os dados inseridos, gere os balões e exiba as respostas do bot
-        function enviarMensagem() {
-            // Conecte imediatamente com os elementos do HTML usando os IDs corretos
-            const select = document.getElementById('chatSelect');
-            const chatWindow = document.getElementById('chatWindow');
-            const valor = select.value; // Capture o identificador ("p1", "p2" ou "p3")
-            
-            // TRAVA DE SEGURANÇA: Bloqueie o envio caso o campo esteja vazio!
-            if (!valor) return;
-
-            // Extraia o texto descritivo da opção selecionada pelo usuário
-            const textoUsuario = select.options[select.selectedIndex].text;
-
-            // Crie e configure o balão de mensagem do usuário em tempo real
-            const msgUser = document.createElement('div');
-            msgUser.className = 'msg user'; // Carregue a classe CSS correta
-            msgUser.innerText = textoUsuario; // Insira o texto dentro do elemento
-            chatWindow.appendChild(msgUser); // Mande o balão direto para a tela
-
-            // Faça o cruzamento de dados para selecionar a resposta certa para cada caso
-            let respostaBot = "";
-            if (valor === "p1") {
-                respostaBot = "⚠️ Se o Controle Cultural sozinho não fez os organismos sumirem, não desanime! O MIP propõe combinar as estratégias. Sugiro aplicar agora o CONTROLE BIOLÓGICO 🐞: introduza inimigos naturais (como insetos predadores ou microrganismos) para equilibrar o ecossistema e conter as pragas de forma limpa!";
-            } else if (valor === "p2") {
-                respostaBot = "🛡️ Excelente decisão! Para conter as lagartas de forma sustentável, use o CONTROLE GENÉTICO 🧬 escolhendo cultivares resistentes na próxima safra, ou aplique bioinsumos específicos que atuam apenas na praga sem agredir o meio ambiente.";
-            } else if (valor === "p3") {
-                respostaBot = "🪤 Para essa situação, a melhor alternativa é o CONTROLE COMPORTAMENTAL! Você pode instalar armadilhas com feromônios específicos na lavoura. Isso atrai e captura os insetos usando o próprio comportamento deles, sem veneno.";
-            }
-
-            // ACIONE O TIMER: Aguarde 400 milissegundos para disparar a resposta (efeito realista)
-            setTimeout(() => {
-                const msgBot = document.createElement('div');
-                msgBot.className = 'msg bot'; // Carregue as regras visuais do robô
-                msgBot.innerText = respostaBot; // Carregue o texto da resposta
-                chatWindow.appendChild(msgBot); // Insira o balão do bot na tela
-                
-                // COMANDO OBRIGATÓRIO: Force a janela a rolar para o fim para exibir o texto novo
-                chatWindow.scrollTop = chatWindow.scrollHeight;
-            }, 400);
-
-            // LIMPEZA OBRIGATÓRIA: Resete o menu dropdown para evitar envios duplicados
-            select.value = "";
-            
-            // Execute uma rolagem extra para garantir a perfeita visualização
-            chatWindow.scrollTop = chatWindow.scrollHeight;
-        }
-    </script>
-</body>
-</html>
+            background-color: var(--
