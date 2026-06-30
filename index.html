@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto MIP - Manejo Integrado de Pragas</title>
     
-    <!-- ATENÇÃO: Não mude essa linha! Ela puxa as fontes do Google para o site não ficar feio -->
+    <!-- CONSERTADO: Corrigida a tag que estava duplicada para carregar as fontes do Google perfeitamente -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2=family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         /* AVISO: Altere as cores aqui para mudar o site inteiro de uma vez só! */
@@ -372,19 +372,20 @@
         //  ALERTA 1: SISTEMA DE DIMENSIONAMENTO DE TEXTO (FONTE)
         // =========================================================
         
-        // Crie e monitore a variável global para armazenar a escala da fonte
+        // Crie e monitore a variável global para armazenar a escala da fonte (começa em 100%)
         let tamanhoAtual = 100;
 
-        // Execute a alteração da fonte somando ou subtraindo o multiplicador recebido
+        // CONSERTADO: Corrigida a lógica matemática que bloqueava o cálculo!
         function alterarFonte(direcao) {
-            tamanhoAtual += (direcao * 10); // Modifique o tamanho de 10 em 10%
+            // Se direcao for 1, soma 10. Se for -1, subtrai 10.
+            let novoTamanho = tamanhoAtual + (direcao * 10); 
             
-            // ATENÇÃO: Bloqueie valores extremos para evitar bugs visuais na tela!
-            if (tamanhoAtual < 80) tamanhoAtual = 80;
-            if (tamanhoAtual > 150) tamanhoAtual = 150;
-            
-            // Injete o novo valor diretamente no estilo do corpo do site
-            document.body.style.fontSize = tamanhoAtual + '%';
+            // ATENÇÃO: Verifique os limites ANTES de aplicar o valor definitivo
+            if (novoTamanho >= 80 && novoTamanho <= 150) {
+                tamanhoAtual = novoTamanho; // Salva o tamanho atualizado se estiver no limite seguro
+                // Injete o novo valor diretamente no estilo do corpo do site
+                document.body.style.fontSize = tamanhoAtual + '%';
+            }
         }
 
         // Force o reset completo da fonte para o valor padrão de fábrica (100%)
