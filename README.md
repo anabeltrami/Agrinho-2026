@@ -1,22 +1,32 @@
 # Agrinho-2026
 
-Projeto MIP (Manejo Integrado de Pragas) - Agrinho 2026
+# 🌾 Projeto Agrinho 2026: Manejo Integrado de Pragas (MIP)
+> **Hashtag Oficial:** #agrinho2026  
 
-Este site foi desenvolvido com foco em sustentabilidade, ecologia e tecnologia aplicada ao campo, promovendo soluções limpas para o manejo de lavouras. 
+## O que é o projeto e qual o meu objetivo?
+O Projeto MIP é um site interativo que criei para mostrar que cuidar da lavoura de forma inteligente e ecológica traz um excelente retorno técnico e econômico. O meu grande objetivo com esse plano é ensinar o produtor a prevenir, monitorar e controlar pragas que causam prejuízos à agricultura, mantendo os organismos sob controle sem eliminá-los completamente. Quero mostrar, de um jeito prático, como o agricultor pode tomar decisões no momento certo através do "Nível de Controle", reduzindo o uso excessivo de químicos e preservando os insetos benéficos.
 
-Sobre o Projeto:
-O site apresenta de forma clara e interativa o funcionamento do Manejo Integrado de Pragas, detalhando seus objetivos fundamentais, passos para monitoramento inicial em campo e abordagens ecológicas em substituição aos defensivos químicos tradicionais.
+## Por que fazer isso? Qual seria a minha justificativa?
+Esse projeto foi criado para responder ao tema do Agrinho deste ano: "Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente". Eu acredito que o verdadeiro agro forte não precisa depender exclusivamente de remédios químicos tradicionais. Com a abordagem que coloquei no meu plano (dividida em etapas claras como Identificação, Monitoramento e Tomada de Decisão), eu provo que dá para proteger a produtividade das lavouras de forma eficiente e sustentável e, ao mesmo tempo, manter o ecossistema equilibrado, seguro e cheio de vida para as próximas gerações.
 
-Recursos Implementados:
-Design Personalizado: Cores em tons de verde e azul claro com fontes arredondadas, fofas e modernas (Nunito).
-Acessibilidade Dinâmica (JavaScript): Botões nativos na parte superior da interface para aumentar e diminuir o tamanho dos textos dinamicamente, garantindo inclusão para pessoas com dificuldades visuais.
-Assistente de Campo Interativo: Um simulador inteligente de suporte agrícola. Quando o produtor indica em nosso chat de perguntas que um método específico não está fazendo os organismos sumirem, o sistema sugere uma resposta instruindo o uso de outros métodos eficazes.
+## Como organizei os arquivos do site? 
+Seguindo as diretrizes de desenvolvimento web para deixar o projeto bem organizado e profissional, dividi o site em três arquivos separados, além deste documento explicativo:
+* index.html: É o esqueleto do site. Aqui fica toda a estrutura semântica do texto, a ordem lógica das informações conceituais e os elementos interativos que o usuário vê.
+* style.css: É a folha de estilo que cuida da beleza do site. É aqui que configuro a minha paleta de cores (tons de verde planta e azul claro), aplico a fonte arredondada, fofa e moderna (`Nunito`), e arrumo o visual responsivo e os efeitos de transição usando CSS moderno.
+* script.js: É o cérebro do site. Esse arquivo em JavaScript nativo cuida de toda a manipulação do DOM e da parte que se mexe, como o sistema de redimensionamento de letras e as respostas automáticas integradas na central de dúvidas.
 
-Autoria dos Textos:
-Textos do Site: Todos os conteúdos e explicações foram produzidos por Ana Julia Ramos Beltrami.
+## Tecnologias e ferramentas que usei para interagir?
+* Botão de Acessibilidade (JavaScript): Criei comandos lógicos que aumentam, diminuem ou resetam o tamanho dos textos do site de forma dinâmica. Isso garante a usabilidade e a inclusão para pessoas que tenham dificuldades visuais.
+* Central de Dúvidas Integrada (Chatbot): Desenvolvi um simulador inteligente de suporte de campo. Quando o visitante seleciona um cenário prático (como o insucesso inicial de um método cultural), o algoritmo do chat responde de forma dinâmica propondo a rotação ou associação com novos métodos eficazes. 
+* Layout Responsivo e Flexbox: Organizeis os cards de conteúdos e a caixinha dos métodos agrícolas (Cultural, Biológico, Genético e Comportamental) para se adaptarem perfeitamente a telas de computadores ou celulares.
 
-Referências Bibliográficas (Manejo Integrado de Pragas)
-Para a construção dos conteúdos e fundamentação em preservação do ecossistema e controle responsável, foram utilizadas referências de portais de pesquisa:
-1. Portal Embrapa (Empresa Brasileira de Pesquisa Agropecuária): Manuais práticos, dados de pesquisa e guias técnicos oficiais sobre o Manejo Integrado de Pragas (MIP) e uso de inimigos naturais.
-2. Ministério da Agricultura e Pecuária (MAPA): Diretrizes nacionais sobre o avanço dos bioinsumos, níveis de controle e regulamentação de métodos sustentáveis no campo.
-3. Plataformas de Tecnologia Agrícola e MIP: Estudos técnicos sobre monitoramento de pragas, determinação do "Nível de Controle" econômico e preservação de insetos benéficos à lavoura.
+---
+
+## Referência e Direitos Autorais: 
+
+Todo o plano conceitual, explicações práticas, etapas de monitoramento e textos explicativos que estão no site foram criados e integralmente redigidos por mim: Ana Julia Ramos Beltrami.
+
+Para estudar e conferir se todos os dados científicos sobre manejo e entomologia agrícola estavam certinhos, usei como base de pesquisa os seguintes portais da internet:
+1.  Portal Embrapa (Empresa Brasileira de Pesquisa Agropecuária): embrapa.br
+2.  Ministério da Agricultura e Pecuária (MAPA): gov.br/agricultura
+3.  Sistemas de Defesa Agropecuária e Portais de MIP: Estudos técnicos focados em monitoramento ecológico e preservação da fauna benéfica.
