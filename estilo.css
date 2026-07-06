@@ -61,7 +61,7 @@ body {
     background-color: #f0f7f4;
 }
 
-/* --- AQUI ESTÁ A MÁGICA DOS QUADROS ARREDONDADOS --- */
+/* --- QUADROS ARREDONDADOS DESTACADOS --- */
 
 /* O cabeçalho principal ganha o seu próprio quadro */
 .card-header {
@@ -69,16 +69,17 @@ body {
     border-radius: var(--borda-raio-cards);
     padding: 30px 20px;
     margin-bottom: 25px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
     text-align: center;
+    border: 2px solid rgba(45, 106, 79, 0.15);
 }
 
-/* Cada seção agora funciona como um agrupador invisível */
+/* Cada seção funciona como um agrupador */
 .card-secao {
     margin-bottom: 30px;
 }
 
-/* Os títulos ficam destacados logo acima ou dentro do fluxo */
+/* Os títulos ficam destacados */
 .titulo-principal {
     font-family: 'Fredoka', sans-serif;
     color: var(--verde-escuro);
@@ -97,28 +98,28 @@ body {
     color: var(--verde-escuro);
     font-size: 1.4rem;
     margin-bottom: 12px;
-    padding-left: 5px; /* Alinha com os quadros */
+    padding-left: 8px;
 }
 
-/* TRANSFORMAÇÃO: Agora todo parágrafo vira um QUADRO BRANCO ARREDONDADO individual */
+/* Todo parágrafo e lista vira um QUADRO BRANCO ARREDONDADO individual com bordas fofas */
 .card-secao p, 
 .card-secao ol, 
 .metodo-box {
     background-color: var(--cor-card-branco);
     border-radius: var(--borda-raio-cards);
-    padding: 20px 22px;
-    margin-bottom: 12px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.03);
+    padding: 22px 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
     text-align: justify;
     font-size: 1.02rem;
     color: #444;
-    border: 1px solid rgba(0, 0, 0, 0.02);
+    border: 2px solid rgba(45, 106, 79, 0.1); /* Delicada bordinha verde para dar acabamento */
 }
 
 /* Ajuste específico para as listas de passos não perderem o recuo */
 .lista-passos {
     list-style-position: inside;
-    padding-left: 15px;
+    padding-left: 5px;
 }
 
 .lista-passos li {
@@ -129,18 +130,19 @@ body {
     margin-bottom: 0;
 }
 
-/* Destaca as caixinhas dos métodos com uma bordinha colorida na esquerda */
+/* Destaca as caixinhas dos métodos com uma bordinha azul na esquerda */
 .metodo-box {
-    border-left: 6px solid #a9def9;
+    border-left: 8px solid #a9def9;
 }
 
 /* Chat Customizado Dentro de Quadro */
 .container-chat-box {
     background-color: #f0f4f8;
     border-radius: var(--borda-raio-cards);
-    padding: 15px;
+    padding: 18px;
     margin-top: 10px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    border: 2px solid rgba(45, 106, 79, 0.1);
 }
 
 .chat-historico-mensagens {
