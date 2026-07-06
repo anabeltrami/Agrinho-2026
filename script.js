@@ -1,60 +1,64 @@
-// Variável global para controle do tamanho da fonte
-let escalaFonteAtual = 100;
+// 1. Função para Aumentar / Diminuir Texto (Acessibilidade)
+let tamanhoFonteAtual = 16;
 
-// Função para aumentar e diminuir letras de forma dinâmica no DOM
-function mudarTamanhoTexto(direcao) {
-    escalaFonteAtual += (direcao * 10);
-    // Limites de segurança para manter o site visualmente agradável
-    if (escalaFonteAtual < 80) escalaFonteAtual = 80;
-    if (escalaFonteAtual > 140) escalaFonteAtual = 140;
-    document.body.style.fontSize = escalaFonteAtual + '%';
+function alterarFonte(direcao) {
+    tamanhoFonteAtual += direcao * 2;
+    // Define limites para a fonte não quebrar o layout
+    if (tamanhoFonteAtual < 12) tamanhoFonteAtual = 12;
+    if (tamanhoFonteAtual > 26) tamanhoFonteAtual = 26;
+    document.body.style.fontSize = tamanhoFonteAtual + "px";
 }
 
-// Função para resetar as fontes ao tamanho normal
-function resetarTamanhoTexto() {
-    escalaFonteAtual = 100;
-    document.body.style.fontSize = '100%';
+// 2. Função para o botão de clique rápido das sugestões
+function usarSugestao(texto) {
+    document.getElementById('chat-mensagem-input').value = texto;
+    enviarMensagem();
 }
 
-// Função do Chat Interativo (Sugere alternativas de métodos MIP)
-function processarChat() {
-    const seletor = document.getElementById('seletorPergunta');
-    const containerChat = document.getElementById('boxMensagens');
-    const valorSelecionado = seletor.value;
+// 3. Função principal do Chat Interativo
+function enviarMensagem() {
+    const input = document.getElementById('chat-mensagem-input');
+    const textoMensagem = input.value.trim();
     
-    // Impede o envio se o usuário não escolheu nenhuma opção válida
-    if (!valorSelecionado) return;
+    if (textoMensagem === "") return;
 
-    const textoDaPergunta = seletor.options[seletor.selectedIndex].text;
+    const historico = document.getElementById('chat-historico');
 
-    // Criando e estruturando dinamicamente o balão de mensagem do usuário
-    const containerUsuario = document.createElement('div');
-    containerUsuario.className = 'chat-message user-side';
-    containerUsuario.innerText = textoDaPergunta;
-    containerChat.appendChild(containerUsuario);
+    // Cria a mensagem digitada pelo usuário e coloca na tela
+    const divUsuario = document.createElement('div');
+    divUsuario.className = 'mensagem msg-usuario';
+    divUsuario.textContent = textoMensagem;
+    historico.appendChild(divUsuario);
 
-    // Estruturação lógica das respostas alternativas focadas no MIP
-    let respostaDoSistema = "";
-    if (valorSelecionado === "opcao1") {
-        respostaDoSistema = "⚠️ Atenção: Se o método Cultural aplicado não causou o sumiço dos organismos, isso faz parte! O MIP prega que o objetivo não é eliminar 100% e sim controlar. Como o primeiro método não bastou, a resposta certa é associar o CONTROLE BIOLÓGICO 🐞. Recomenda-se introduzir inimigos naturais no campo (como insetos predadores) para combater os organismos de forma eficiente e ecológica!";
-    } else if (valorSelecionado === "opcao2") {
-        respostaDoSistema = "📊 O monitoramento é a base! Antes de aplicar qualquer produto químico, verifique se a população atingiu o 'Nível de Controle' estabelecido. Se o custo do prejuízo for maior que o do controle, use o CONTROLE GENÉTICO 🧬 com sementes resistentes ou bioinsumos integrados.";
-    } else if (valorSelecionado === "opcao3") {
-        respostaDoSistema = "🪤 Perfeito! Para aplicar o Controle Comportamental de forma barata e eficaz, espalhe armadilhas com feromônios específicos pela lavoura. Isso confunde o acasalamento dos insetos e interrompe o ciclo de reprodução sem poluir o ambiente.";
-    }
+    // Limpa a barra de texto e foca o scroll no fim do chat
+    input.value = "";
+    historico.scrollTop = historico.scrollHeight;
 
-    // Delay simulado de resposta para melhorar a usabilidade humana
+    // Inteligência Artificial do Chat: Resposta automática inteligente após um pequeno atraso
     setTimeout(() => {
-        const containerBot = document.createElement('div');
-        containerBot.className = 'chat-message bot-side';
-        containerBot.innerText = respostaDoSistema;
-        containerChat.appendChild(containerBot);
-        
-        // Mantém a rolagem sempre no final da caixa de conversa
-        containerChat.scrollTop = containerChat.scrollHeight;
-    }, 450);
+        const divBot = document.createElement('div');
+        divBot.className = 'mensagem msg-bot';
 
-    // Reseta o campo select para a posição neutra
-    seletor.value = "";
-    containerChat.scrollTop = containerChat.scrollHeight;
+        // Análise lógica do texto digitado para sugerir novas estratégias
+        if (textoMensagem.toLowerCase().includes('não estão sumindo') || textoMensagem.toLowerCase().includes('não somem')) {
+            divBot.innerHTML = "<strong>Sugestão MIP:</strong> Se os organismos não estão sumindo com o método atual, eles podem ter desenvolvido resistência! 💡 Recomendamos que você alterne a estratégia imediatamente e utilize o <strong>Controle Biológico</strong> (introduzindo inimigos naturais como joaninhas e microrganismos) ou o <strong>Controle Comportamental</strong> (usando armadilhas de feromônios). Isso vai quebrar o ciclo e salvar sua lavoura de forma equilibrada! 🐞🕸️";
+        } else if (textoMensagem.toLowerCase().includes('biológico') || textoMensagem.toLowerCase().includes('biologico')) {
+            divBot.innerHTML = "O <strong>Controle Biológico</strong> usa a força da própria natureza! 🌿 Você insere predadores naturais (como insetos benéficos ou fungos específicos) que atacam apenas as pragas alvo, mantendo o ecossistema protegido e sem usar venenos! 🐜✨";
+        } else {
+            divBot.innerHTML = "Entendi perfeitamente sua dúvida! Lembre-se que no MIP só iniciamos técnicas mais fortes se a população de pragas atingir o 'Nível de Controle'. Qual técnica você está utilizando hoje na plantação? 🚜🌾";
+        }
+
+        historico.appendChild(divBot);
+        historico.scrollTop = historico.scrollHeight;
+    }, 600);
 }
+
+// Escuta os cliques no botão Enviar da tela
+document.getElementById('btn-enviar-msg').addEventListener('click', enviarMensagem);
+
+// Permite enviar a mensagem também pressionando a tecla Enter
+document.getElementById('chat-mensagem-input').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        enviarMensagem();
+    }
+});
