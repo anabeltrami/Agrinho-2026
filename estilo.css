@@ -1,12 +1,12 @@
 :root {
     --verde-escuro: #2d6a4f;
     --verde-suave: #40916c;
-    --fundo-gradiente-inicio: #f9fecf; /* Tom amarelo/verde bem clarinho igual ao topo do print */
-    --fundo-gradiente-fim: #eef9f2;    /* Mistura suave com azul-claro */
+    --fundo-gradiente-inicio: #f9fecf; /* Amarelinho fofo do topo do print */
+    --fundo-gradiente-fim: #eef9f2;
     --cor-azul-texto: #1d3557;
     --cor-card-branco: #ffffff;
     --cor-azul-botao: #4a90e2;
-    --borda-raio-padrao: 40px; /* Bordas bem redondas idênticas ao print */
+    --borda-raio-cards: 25px; /* Cantos bem arredondados para os quadros */
 }
 
 * {
@@ -25,14 +25,14 @@ body {
     min-height: 100vh;
 }
 
-/* Container que simula tela de aplicativo ou card centralizado */
+/* Container principal estilo Aplicativo */
 .app-container {
     max-width: 500px;
     margin: 0 auto;
     padding: 0 15px;
 }
 
-/* Barra Flutuante de Acessibilidade */
+/* Barra de Acessibilidade Flutuante */
 .acessibilidade-container {
     display: flex;
     justify-content: center;
@@ -47,7 +47,7 @@ body {
     color: var(--cor-azul-botao);
     border: 2px solid var(--verde-escuro);
     padding: 10px 22px;
-    border-radius: 30px; /* Estilo pílula do print */
+    border-radius: 30px; /* Formato pílula */
     font-family: 'Fredoka', sans-serif;
     font-size: 0.95rem;
     font-weight: 600;
@@ -61,25 +61,32 @@ body {
     background-color: #f0f7f4;
 }
 
-/* Cards arredondados idênticos ao layout enviado */
-.card-header, .card-secao {
+/* --- AQUI ESTÁ A MÁGICA DOS QUADROS ARREDONDADOS --- */
+
+/* O cabeçalho principal ganha o seu próprio quadro */
+.card-header {
     background-color: var(--cor-card-branco);
-    border-radius: var(--borda-raio-padrao);
-    padding: 35px 25px;
+    border-radius: var(--borda-raio-cards);
+    padding: 30px 20px;
     margin-bottom: 25px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    text-align: center;
 }
 
+/* Cada seção agora funciona como um agrupador invisível */
+.card-secao {
+    margin-bottom: 30px;
+}
+
+/* Os títulos ficam destacados logo acima ou dentro do fluxo */
 .titulo-principal {
     font-family: 'Fredoka', sans-serif;
     color: var(--verde-escuro);
     font-size: 2.2rem;
-    text-align: center;
     margin-bottom: 12px;
 }
 
 .subtitulo {
-    text-align: center;
     font-size: 1.05rem;
     color: #666;
     font-weight: 700;
@@ -88,41 +95,52 @@ body {
 .titulo-secao {
     font-family: 'Fredoka', sans-serif;
     color: var(--verde-escuro);
-    font-size: 1.5rem;
-    margin-bottom: 18px;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    padding-left: 5px; /* Alinha com os quadros */
 }
 
-p {
+/* TRANSFORMAÇÃO: Agora todo parágrafo vira um QUADRO BRANCO ARREDONDADO individual */
+.card-secao p, 
+.card-secao ol, 
+.metodo-box {
+    background-color: var(--cor-card-branco);
+    border-radius: var(--borda-raio-cards);
+    padding: 20px 22px;
+    margin-bottom: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.03);
     text-align: justify;
-    font-size: 1.05rem;
+    font-size: 1.02rem;
     color: #444;
-    margin-bottom: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.02);
 }
 
+/* Ajuste específico para as listas de passos não perderem o recuo */
 .lista-passos {
-    margin-left: 15px;
-    font-size: 1.02rem;
+    list-style-position: inside;
+    padding-left: 15px;
 }
 
 .lista-passos li {
-    margin-bottom: 15px;
-}
-
-.metodo-box {
-    background-color: #f4fbf7;
-    padding: 15px;
-    border-radius: 20px;
     margin-bottom: 12px;
-    border-left: 5px solid #a9def9;
-    font-size: 1rem;
 }
 
-/* Chat Customizado */
+.lista-passos li:last-child {
+    margin-bottom: 0;
+}
+
+/* Destaca as caixinhas dos métodos com uma bordinha colorida na esquerda */
+.metodo-box {
+    border-left: 6px solid #a9def9;
+}
+
+/* Chat Customizado Dentro de Quadro */
 .container-chat-box {
     background-color: #f0f4f8;
-    border-radius: 25px;
+    border-radius: var(--borda-raio-cards);
     padding: 15px;
-    margin-top: 15px;
+    margin-top: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.03);
 }
 
 .chat-historico-mensagens {
@@ -196,7 +214,7 @@ p {
     background-color: var(--cor-card-branco);
     border: 1px solid var(--verde-suave);
     color: var(--verde-escuro);
-    padding: 8px 12px;
+    padding: 10px 14px;
     border-radius: 15px;
     font-size: 0.88rem;
     font-family: 'Quicksand', sans-serif;
@@ -211,7 +229,7 @@ p {
 
 .rodape-app {
     text-align: center;
-    padding: 15px 0;
+    padding: 20px 0;
     font-size: 0.9rem;
     color: #555;
     font-weight: bold;
