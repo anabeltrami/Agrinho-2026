@@ -1,37 +1,87 @@
-function enviarMensagem() {
-    const input = document.getElementById('chat-mensagem-input');
-    const textoMensagem = input.value.trim();
-    
-    if (textoMensagem === "") return;
+// Aguarda o carregamento completo do DOM para evitar erros no celular e GitHub Pages
+document.addEventListener("DOMContentLoaded", function() {
 
-    const historico = document.getElementById('chat-historico');
+    // 1. Configuração de Acessibilidade (Aumentar/Diminuir Letra)
+    let tamanhoFonte = 16;
+    const btnMais = document.getElementById('btn-com-fonte-mais');
+    const btnMenos = document.getElementById('btn-com-fonte-menos');
 
-    // Cria a mensagem digitada pelo usuário e coloca na tela
-    const divUsuario = document.createElement('div');
-    divUsuario.className = 'mensagem msg-usuario';
-    divUsuario.textContent = textoMensagem;
-    historico.appendChild(divUsuario);
+    if (btnMais && btnMenos) {
+        btnMais.addEventListener('click', function() {
+            if (tamanhoFonte < 24) {
+                tamanhoFonte += 2;
+                document.body.style.fontSize = tamanhoFonte + "px";
+            }
+        });
 
-    // Limpa a barra de texto e foca o scroll no fim do chat
-    input.value = "";
-    historico.scrollTop = historico.scrollHeight;
+        btnMenos.addEventListener('click', function() {
+            if (tamanhoFonte > 12) {
+                tamanhoFonte -= 2;
+                document.body.style.fontSize = tamanhoFonte + "px";
+            }
+        });
+    }
 
-    // Resposta automática após um pequeno atraso
-    setTimeout(() => {
-        const divBot = document.createElement('div');
-        divBot.className = 'mensagem msg-bot';
+    // 2. Eventos do Chat Interativo
+    const inputChat = document.getElementById('chat-mensagem-input');
+    const btnEnviar = document.getElementById('btn-enviar-msg');
+    const historicoChat = document.getElementById('chat-historico');
 
-        // Análise lógica do texto digitado para sugerir novas estratégias
-        // AQUI ESTÁ A CORREÇÃO: Usamos aspas simples 'Nível de Controle' por dentro das aspas duplas!
-        if (textoMensagem.toLowerCase().includes('não estão sumindo') || textoMensagem.toLowerCase().includes('não somem')) {
-            divBot.innerHTML = "<strong>Sugestão MIP:</strong> Se os organismos não estão sumindo com o método atual, eles podem ter desenvolvido resistência! 💡 Recomendamos que você alterne a estratégia imediatamente e utilize o <strong>Controle Biológico</strong> (introduzindo inimigos naturais como joaninhas e microrganismos) ou o <strong>Controle Comportamental</strong> (usando armadilhas de feromônios). Isso vai quebrar o ciclo e salvar sua lavoura de forma equilibrada! 🐞🕸️";
-        } else if (textoMensagem.toLowerCase().includes('biológico') || textoMensagem.toLowerCase().includes('biologico')) {
-            divBot.innerHTML = "O <strong>Controle Biológico</strong> usa a força da própria natureza! 🌿 Você insere predadores naturais (como insetos benéficos ou fungos específicos) que atacam apenas as pragas alvo, mantendo o ecossistema protegido e sem usar venenos! 🐜✨";
-        } else {
-            divBot.innerHTML = "Entendi perfeitamente sua dúvida! Lembre-se que no MIP só iniciamos técnicas mais fortes se a população de pragas atingir o 'Nível de Controle'. Qual técnica você está utilizando hoje na plantação? 🚜🌾";
-        }
+    function processarEnvioMensagem(texto) {
+        const mensagemTexto = texto || inputChat.value.trim();
+        if (mensagemTexto === "") return;
 
-        historico.appendChild(divBot);
-        historico.scrollTop = historico.scrollHeight;
-    }, 600);
-}
+        // Adiciona mensagem do Usuário
+        const divUsuario = document.createElement('div');
+        divUsuario.className = 'mensagem-chat msg-usuario-envio';
+        divUsuario.textContent = mensagemTexto;
+        historicoChat.appendChild(divUsuario);
+
+        inputChat.value = "";
+        historicoChat.scrollTop = historicoChat.scrollHeight;
+
+        // Resposta automatizada com lógica de alternância de métodos
+        setTimeout(() => {
+            const divBot = document.createElement('div');
+            divBot.className = 'mensagem-chat msg-sistema-bot';
+
+            const textoMinusculo = mensagemTexto.toLowerCase();
+
+            if (textoMinusculo.includes('não estão sumindo') || textoMinusculo.includes('não somem')) {
+                divBot.innerHTML = "<strong>Sugestão MIP:</strong> Se os organismos não estão sumindo, eles podem ter criado resistência ao manejo atual! 💡 Sugerimos mudar a tática e aplicar o <strong>Controle Biológico</strong> introduzindo inimigos naturais, ou o <strong>Controle Comportamental</strong> usando armadilhas de feromônios. Isso quebrará o ciclo de reprodução deles sem agredir o meio ambiente! 🐞🕸️";
+            } else if (textoMinusculo.includes('biológico') || textoMinusculo.includes('biologico')) {
+                divBot.innerHTML = "O <strong>Controle Biológico</strong> combate as pragas usando a própria biodiversidade! 🌿 Você insere predadores benéficos (como microrganismos ou outros insetos) que eliminam os alvos naturalmente, preservando a saúde humana e a plantação! 🐜✨";
+            } else {
+                divBot.innerHTML = "Excelente pergunta! Lembre-se que no MIP nós monitoramos constantemente o campo e só agimos de forma agressiva se atingir o 'Nível de Controle'. Qual dos métodos você gostaria de detalhar mais? 🚜🌾";
+            }
+
+            historicoChat.appendChild(divBot);
+            historicoChat.scrollTop = historicoChat.scrollHeight;
+        }, 600);
+    }
+
+    // Ouvinte do botão enviar tradicional
+    if (btnEnviar) {
+        btnEnviar.addEventListener('click', function() {
+            processarEnvioMensagem();
+        });
+    }
+
+    // Ouvinte da tecla Enter
+    if (inputChat) {
+        inputChat.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                processarEnvioMensagem();
+            }
+        });
+    }
+
+    // Ouvinte para os botões de sugestão rápida (captura o clique em qualquer botão com a classe)
+    document.querySelectorAll('.btn-opcao-sugestao').forEach(botao => {
+        botao.addEventListener('click', function() {
+            const textoSugestao = this.getAttribute('data-texto');
+            processarEnvioMensagem(textoSugestao);
+        });
+    });
+
+});
