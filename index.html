@@ -3,419 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto MIP - Manejo Integrado de Pragas</title>
+    <meta name="keywords" content="#agrinho2026">
+    <title>Projeto MIP - Concurso Agrinho</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     
-    <style>
-        /* Configuração da raiz do site.*/
-        :root {
-            --verde-principal: #2d6a4f;
-            --verde-claro: #d8f3dc;
-            --verde-destaque: #52b788;
-            --azul-claro: #e0f2fe;
-            --azul-botao: #38bdf8;
-            --azul-escuro: #0369a1;
-            --texto-cor: #2d3748;
-            --background: #f0fdf4;
-        }
-
-        /* REGRA GERAL */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Efeito de transição*/
-        html {
-            font-size: 16px; /* Começa com o padrão de 16px */
-            transition: font-size 0.2s ease;
-        }
-
-        body {
-            font-family: 'Nunito', sans-serif;
-            background-color: var(--background);
-            color: var(--texto-cor);
-            line-height: 1.6;
-            padding-bottom: 60px;
-        }
-
-        /* DESIGN: Configuração do cabeçalho */
-        header {
-            background: linear-gradient(135deg, var(--verde-principal), var(--verde-destaque));
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
-        }
-
-        header h1 {
-            font-size: 2.5rem; /* Baseado no tamanho da raiz */
-            margin-bottom: 10px;
-            font-weight: 800;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* ALINHAMENTO*/
-        .accessibility-bar {
-            background-color: var(--azul-claro);
-            padding: 10px 20px;
-            text-align: right;
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-            align-items: center;
-            border-bottom: 2px solid #bae6fd;
-        }
-
-        .accessibility-bar span {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--azul-escuro);
-        }
-
-        /* BOTÕES*/
-        .btn-acc {
-            background-color: white;
-            border: 2px solid var(--azul-botao);
-            color: var(--azul-escuro);
-            padding: 5px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            font-family: 'Nunito', sans-serif;
-            transition: all 0.2s;
-        }
-
-        .btn-acc:hover {
-            background-color: var(--azul-botao);
-            color: white;
-        }
-
-        /* ESTRUTURA*/
-        main {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        /* ESTILO*/
-        .card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 20px rgba(45, 106, 79, 0.05); 
-            border: 1px solid var(--verde-claro);
-        }
-
-        h2 {
-            color: var(--verde-principal);
-            margin-bottom: 15px;
-            font-size: 1.6rem;
-            border-left: 5px solid var(--verde-destaque);
-            padding-left: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        p {
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-            text-align: justify;
-        }
-
-        ol {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        li {
-            margin-bottom: 12px;
-            font-size: 1.05rem;
-        }
-
-        strong {
-            color: var(--verde-principal);
-        }
-
-        /* Organiza os métodos */
-        .metodos-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .metodo-item {
-            background-color: var(--azul-claro);
-            padding: 15px;
-            border-radius: 15px;
-            border: 1px solid #bae6fd;
-        }
-
-        .metodo-item strong {
-            color: var(--azul-escuro);
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        /* Área interativa */
-        .chat-container {
-            background-color: #fafafa;
-            border: 2px dashed var(--azul-botao); 
-            border-radius: 20px;
-            padding: 20px;
-            margin-top: 20px;
-        }
-
-        /* JANELA DO CHAT */
-        .chat-window {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 15px;
-            height: 250px;
-            overflow-y: auto;
-            padding: 15px;
-            margin-bottom: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        /* BALÕES DE MENSAGEM */
-        .msg {
-            max-width: 80%;
-            padding: 10px 15px;
-            border-radius: 15px;
-            font-size: 0.95rem;
-        }
-
-        .msg.user {
-            background-color: var(--verde-claro);
-            color: var(--verde-principal);
-            margin-left: auto;
-            border-bottom-right-radius: 2px;
-        }
-
-        .msg.bot {
-            background-color: var(--azul-claro);
-            color: var(--azul-escuro);
-            margin-right: auto;
-            border-bottom-left-radius: 2px;
-        }
-
-        .chat-input-area {
-            display: flex;
-            gap: 10px;
-        }
-
-        select {
-            flex: 1; 
-            padding: 10px;
-            border-radius: 12px;
-            border: 2px solid var(--azul-botao);
-            font-family: 'Nunito', sans-serif;
-            font-size: 1rem;
-            outline: none;
-            background-color: white;
-        }
-
-        .btn-send {
-            background-color: var(--verde-destaque);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: bold;
-            font-family: 'Nunito', sans-serif;
-            transition: background 0.2s;
-        }
-
-        .btn-send:hover {
-            background-color: var(--verde-principal);
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            background-color: var(--verde-principal);
-            color: white;
-            margin-top: 30px;
-            border-top-left-radius: 30px;
-            border-top-right-radius: 30px;
-        }
-
-        .refs {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            margin-top: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="accessibility-bar">
-        <span>Acessibilidade ♿:</span>
-        <button class="btn-acc" onclick="alterarFonte(1)">Aumentar Letra ➕</button>
-        <button class="btn-acc" onclick="alterarFonte(-1)">Diminuir Letra ➖</button>
-        <button class="btn-acc" onclick="resetarFonte()">Padrão 🔄</button>
+    <div class="accessibility-container">
+        <span>Acessibilidade:</span>
+        <button class="btn-accessibility" onclick="mudarTamanhoTexto(1)">Aumentar Letra ➕</button>
+        <button class="btn-accessibility" onclick="mudarTamanhoTexto(-1)">Diminuir Letra ➖</button>
+        <button class="btn-accessibility" onclick="resetarTamanhoTexto()">Padrão 🔄</button>
     </div>
 
     <header>
         <h1>Projeto MIP 🌾</h1>
-        <p>Manejo Integrado de Pragas</p>
+        <p>“Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente”</p>
     </header>
 
     <main>
-        <div class="card">
-            <p>O projeto Mip, também conhecido como Manejo Integrado de Pragas, é uma maneira ecológica e inteligente de cuidar das plantações...</p>
-        </div>
+        <section class="info-card">
+            <p>O projeto Mip, também conhecido como Manejo Integrado de Pragas, é uma maneira ecológica e inteligente de cuidar das plantações. Trocando o método de usar produtos químicos contra insetos, ele usa outros diversos métodos diferentes para proteger a plantação, assim protegendo a natureza. 🍃</p>
+        </section>
 
-        <div class="card">
-            <h2>🎯 Objetivo</h2>
-            <p>Esse projeto serve para prevenir, monitorar e controlar pragas...</p>
-        </div>
+        <section class="info-card">
+            <h2> Objetivo</h2>
+            <p>Esse projeto serve para prevenir, monitorar e controlar pragas que causam grande prejuízo a agricultura, com o objetivo de preservá-las sem eliminar elas completamente e apenas, manter elas controladas. Ajuda também na parte de tomada de decisões, fazendo os agricultores saberem o momento certo de agir. 📊</p>
+        </section>
 
-        <div class="card">
-            <h2>🌱 Prática</h2>
-            <p>Permite controlar as pragas de forma eficiente e sustentável...</p>
-        </div>
+        <section class="info-card">
+            <h2> Prática</h2>
+            <p>Permite controlar as pragas de forma eficiente e sustentável. Usando estratégias como utilizar agrotóxicos apenas quando necessário, reduzindo assim os prejuízos nas lavouras, protegendo o meio ambiente e contribuindo para a produção de alimentos mais seguros. Dessa maneira, promovendo uma agricultura mais equilibrada e responsável possível. 🚜</p>
+        </section>
 
-        <div class="card">
-            <h2>🚀 Como Começamos</h2>
+        <section class="info-card">
+            <h2> Como Começamos</h2>
             <ol>
-                <li><strong>Identificação da Praga:</strong> O produtor precisa saber exatamente... 🔍</li>
-                <li><strong>Monitoramento:</strong> Técnicos vão a campo... 📈</li>
-                <li><strong>Tomada de Decisão:</strong> O controle só é ativado quando... ⚖️</li>
+                <li><strong>Identificação da Praga:</strong> O produtor precisa saber exatamente qual organismo está afetando a plantação. Cada organismo exige uma estratégia diferente. 🔍</li>
+                <li><strong>Monitoramento:</strong> Técnicos vão a campo periodicamente para contar a quantidade de pragas. Isso serve para determinar se a população está crescendo e se realmente vai causar prejuízo. 📈</li>
+                <li><strong>Tomada de Decisão:</strong> O controle só é ativado quando o número de pragas atinge o chamado "Nível de Controle", o ponto em que o custo do prejuízo gerado supera o custo de aplicar uma medida de controle. Se o número estiver baixo, nada é feito, deixando a própria natureza agir. ⚖️</li>
             </ol>
-        </div>
+        </section>
 
-        <div class="card">
+        <section class="info-card">
             <h2>💡 Alguns Métodos</h2>
-            <div class="metodos-grid">
-                <div class="metodo-item">
-                    <strong>Controle Cultural 🌾</strong>
+            <div class="grid-methods">
+                <div class="method-box">
+                    <strong>Controle Cultural </strong>
                     Muda o manejo da plantação para desfavoráveis as pragas.
                 </div>
-                <div class="metodo-item">
-                    <strong>Controle Biológico 🐞</strong>
-                    Usa a própria natureza a favor do produtor...
+                <div class="method-box">
+                    <strong>Controle Biológico </strong>
+                    Usa a própria natureza a favor do produtor, introduzindo inimigos naturais das pragas, como insetos predadores ou microrganismos.
                 </div>
-                <div class="metodo-item">
-                    <strong>Controle Genético 🧬</strong>
-                    Uso de plantas modificadas...
+                <div class="method-box">
+                    <strong>Controle Genético </strong>
+                    Uso de plantas modificadas ou variedades que já nascem naturalmente mais resistentes ao ataque de insetos e doenças.
                 </div>
-                <div class="metodo-item">
-                    <strong>Controle Comportamental 🪤</strong>
-                    Confunde ou atrai os insetos usando o comportamento deles...
+                <div class="method-box">
+                    <strong>Controle Comportamental </strong>
+                    Confunde ou atrai os insetos usando o comportamento deles, como armadilhas com feromônios para capturá-los.
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="card">
-            <h2>✨ Importância</h2>
-            <p>É importante termos essa opção pois ela permite controlar as pragas...</p>
-        </div>
+        <section class="info-card">
+            <h2> Importância</h2>
+            <p>É importante termos essa opção pois ela permite controlar as pragas, ao invés de utilizar agrotóxicos como a primeira opção. Tem um conjunto de técnicas para escolher a certa para cada situação. Fazendo com que dessa maneira o ecossistema seja preservado, protecting os insetos benéficos. 🐝</p>
+        </section>
 
-        <div class="card">
-            <h2>💬 Central de Ajuda Interativa do MIP</h2>
-            <p>Selecione uma dúvida comum de campo para receber orientações automáticas:</p>
+        <section class="info-card">
+            <h2>💬 Central de Dúvidas Integrada</h2>
+            <p>Selecione abaixo um cenário prático ou dúvida de aplicação para simular a resposta imediata recomendada pelas diretrizes do MIP:</p>
             
-            <div class="chat-container">
-                <div class="chat-window" id="chatWindow">
-                    <div class="msg bot">Olá! Sou o assistente do Projeto MIP. Escolha uma situação de campo abaixo para analisarmos juntos! 👩‍🌾</div>
+            <div class="chat-wrapper">
+                <div class="chat-box" id="boxMensagens">
+                    <div class="chat-message bot-side">Olá! Sou o seu Assistente de Campo MIP. Escolha um cenário prático de aplicação abaixo para analisarmos a melhor estratégia! 👩‍🌾</div>
                 </div>
-                <div class="chat-input-area">
-                    <select id="chatSelect">
-                        <option value="">-- Selecione uma dúvida ou problema --</option>
-                        <option value="p1">"Apliquei um método cultural mas os organismos ruins ainda não estão sumindo da lavoura."</option>
-                        <option value="p2">"O monitoramento indicou alta de lagartas, mas não quero usar químicos de cara."</option>
-                        <option value="p3">"Como posso atrair e confundir os insetos sem precisar gastar com veneno?"</option>
+                <div class="chat-controls">
+                    <select id="seletorPergunta">
+                        <option value="">-- Escolha um problema para resolver --</option>
+                        <option value="opcao1">"Apliquei um método cultural mas os organismos ruins não estão sumindo da plantação."</option>
+                        <option value="opcao2">"O monitoramento manual acusou alta densidade de insetos, qual o passo técnico inicial?"</option>
+                        <option value="opcao3">"Como aplicar o método comportamental de forma limpa e econômica na plantação?"</option>
                     </select>
-                    <button class="btn-send" onclick="enviarMensagem()">Enviar 📩</button>
+                    <button class="btn-submit" onclick="processarChat()">Enviar 📩</button>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
     <footer>
-        <p>Layout e Desenvolvimento criados para o Agrinho 2026</p>
-        <div class="refs">
-            <p>✍️ <strong>Referências Bibliográficas:</strong> Textos originais elaborados por <em>Ana Julia Ramos Beltrami</em>.</p>
+        <p> Concurso Agrinho 🎓</p>
+        <div class="credits">
+            <p> <strong>Referências Bibliográficas:</strong> Todos os textos conceituais foram redigidos por: <em>Ana Julia Ramos Beltrami</em>.</p>
         </div>
     </footer>
 
-    <script>
-       
-        //  SISTEMA DE SUPER AUMENTO (HTML)
-        
-        let tamanhoBaseEmPx = 16;
-
-        function alterarFonte(direcao) {
-            
-            let novoTamanho = tamanhoBaseEmPx + (direcao * 4); 
-            
-            if (novoTamanho >= 12 && novoTamanho <= 40) {
-                tamanhoBaseEmPx = novoTamanho; 
-                
-                document.documentElement.style.fontSize = tamanhoBaseEmPx + 'px';
-            }
-        }
-
-        function resetarFonte() {
-            tamanhoBaseEmPx = 16;
-            document.documentElement.style.fontSize = '16px';
-        }
-
-    
-        //  MECÂNICA DO CHATBOX
-        
-        function enviarMensagem() {
-            const select = document.getElementById('chatSelect');
-            const chatWindow = document.getElementById('chatWindow');
-            const valor = select.value;
-            
-            if (!valor) return;
-
-            const textoUsuario = select.options[select.selectedIndex].text;
-
-            const msgUser = document.createElement('div');
-            msgUser.className = 'msg user';
-            msgUser.innerText = textoUsuario;
-            chatWindow.appendChild(msgUser);
-
-            let respostaBot = "";
-            if (valor === "p1") {
-                respostaBot = "⚠️ Se o Controle Cultural sozinho não fez os organismos sumirem, não desanime! O MIP propõe combinar as estratégias. Sugiro aplicar agora o CONTROLE BIOLÓGICO 🐞: introduza inimigos naturais (como insetos predadores ou microrganismos) para equilibrar o ecossistema e conter as pragas de forma limpa!";
-            } else if (valor === "p2") {
-                respostaBot = "🛡️ Excelente decisão! Para conter as lagartas de forma sustentável, use o CONTROLE GENÉTICO 🧬 escolhendo cultivares resistentes na próxima safra, ou aplique bioinsumos específicos que atuam apenas na praga sem agredir o meio ambiente.";
-            } else if (valor === "p3") {
-                respostaBot = "🪤 Para essa situação, a melhor alternativa é o CONTROLE COMPORTAMENTAL! Você pode instalar armadilhas com feromônios específicos na lavoura. Isso atrai e captura os insetos usando o próprio comportamento deles, sem veneno.";
-            }
-
-            setTimeout(() => {
-                const msgBot = document.createElement('div');
-                msgBot.className = 'msg bot';
-                msgBot.innerText = respostaBot;
-                chatWindow.appendChild(msgBot);
-                chatWindow.scrollTop = chatWindow.scrollHeight;
-            }, 400);
-
-            select.value = "";
-            chatWindow.scrollTop = chatWindow.scrollHeight;
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
