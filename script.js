@@ -1,27 +1,32 @@
-
-ocument.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
 
     let tamanhoFonte = 16;
+    
+    const btnTema = document.getElementById('btn-tema');
     const btnMais = document.getElementById('btn-com-fonte-mais');
     const btnMenos = document.getElementById('btn-com-fonte-menos');
-    const btnTema = document.getElementById('btn-tema');
 
+    //Tema Escuro
     if (btnTema) {
         btnTema.addEventListener('click', function() {
             document.body.classList.toggle('tema-escuro');
         });
     }
 
-    if (btnMais && btnMenos) {
+    //Aumentar a Fonte
+    if (btnMais) {
         btnMais.addEventListener('click', function() {
-            if (tamanhoFonte < 24) {
+            if (tamanhoFonte < 26) { // Limite máximo
                 tamanhoFonte += 2;
                 document.documentElement.style.fontSize = tamanhoFonte + "px";
             }
         });
+    }
 
+    //Diminuir a Fonte
+    if (btnMenos) {
         btnMenos.addEventListener('click', function() {
-            if (tamanhoFonte > 12) {
+            if (tamanhoFonte > 12) { // Limite mínimo
                 tamanhoFonte -= 2;
                 document.documentElement.style.fontSize = tamanhoFonte + "px";
             }
@@ -36,6 +41,7 @@ ocument.addEventListener("DOMContentLoaded", function() {
         const mensagemTexto = texto || inputChat.value.trim();
         if (mensagemTexto === "") return;
 
+        // Adiciona mensagem
         const divUsuario = document.createElement('div');
         divUsuario.className = 'mensagem-chat msg-usuario-envio';
         divUsuario.textContent = mensagemTexto;
@@ -44,6 +50,7 @@ ocument.addEventListener("DOMContentLoaded", function() {
         inputChat.value = "";
         historicoChat.scrollTop = historicoChat.scrollHeight;
 
+        // Resposta automatica
         setTimeout(() => {
             const divBot = document.createElement('div');
             divBot.className = 'mensagem-chat msg-sistema-bot';
@@ -77,11 +84,11 @@ ocument.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Sugestões rápidas
     document.querySelectorAll('.btn-opcao-sugestao').forEach(botao => {
         botao.addEventListener('click', function() {
             const textoSugestao = this.getAttribute('data-texto');
             processarEnvioMensagem(textoSugestao);
         });
     });
-
 });
