@@ -1,3 +1,4 @@
+alert("Oi! O arquivo JavaScript está funcionando!");
 document.addEventListener("DOMContentLoaded", function() {
 
     let tamanhoFonte = 16;
