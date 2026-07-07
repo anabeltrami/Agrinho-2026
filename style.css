@@ -61,9 +61,10 @@ body {
 .acessibilidade-container {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 12px;
     margin: 10px auto 25px auto;
-    max-width: 400px;
+    width: 100%;
 }
 
 .btn-acessibilidade {
