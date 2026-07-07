@@ -1,27 +1,33 @@
-document.addEventListener("DOMContentLoaded", function() {
 
-    // 1. Configuração de Acessibilidade (Aumentar/Diminuir Letra)
+ocument.addEventListener("DOMContentLoaded", function() {
+
     let tamanhoFonte = 16;
     const btnMais = document.getElementById('btn-com-fonte-mais');
     const btnMenos = document.getElementById('btn-com-fonte-menos');
+    const btnTema = document.getElementById('btn-tema');
+
+    if (btnTema) {
+        btnTema.addEventListener('click', function() {
+            document.body.classList.toggle('tema-escuro');
+        });
+    }
 
     if (btnMais && btnMenos) {
         btnMais.addEventListener('click', function() {
             if (tamanhoFonte < 24) {
                 tamanhoFonte += 2;
-                document.body.style.fontSize = tamanhoFonte + "px";
+                document.documentElement.style.fontSize = tamanhoFonte + "px";
             }
         });
 
         btnMenos.addEventListener('click', function() {
             if (tamanhoFonte > 12) {
                 tamanhoFonte -= 2;
-                document.body.style.fontSize = tamanhoFonte + "px";
+                document.documentElement.style.fontSize = tamanhoFonte + "px";
             }
         });
     }
 
-    // 2. Eventos do Chat Interativo
     const inputChat = document.getElementById('chat-mensagem-input');
     const btnEnviar = document.getElementById('btn-enviar-msg');
     const historicoChat = document.getElementById('chat-historico');
@@ -30,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const mensagemTexto = texto || inputChat.value.trim();
         if (mensagemTexto === "") return;
 
-        // Adiciona mensagem do Usuário
         const divUsuario = document.createElement('div');
         divUsuario.className = 'mensagem-chat msg-usuario-envio';
         divUsuario.textContent = mensagemTexto;
@@ -39,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function() {
         inputChat.value = "";
         historicoChat.scrollTop = historicoChat.scrollHeight;
 
-        // Resposta automatizada com lógica de alternância de métodos
         setTimeout(() => {
             const divBot = document.createElement('div');
             divBot.className = 'mensagem-chat msg-sistema-bot';
@@ -59,14 +63,12 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 600);
     }
 
-    // Ouvinte do botão enviar tradicional
     if (btnEnviar) {
         btnEnviar.addEventListener('click', function() {
             processarEnvioMensagem();
         });
     }
 
-    // Ouvinte da tecla Enter
     if (inputChat) {
         inputChat.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
@@ -75,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Ouvinte para os botões de sugestão rápida
     document.querySelectorAll('.btn-opcao-sugestao').forEach(botao => {
         botao.addEventListener('click', function() {
             const textoSugestao = this.getAttribute('data-texto');

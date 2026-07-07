@@ -1,16 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap');
 
 :root {
-    /* Paleta Feminina e Botânica (MIP Elegante) */
+    /* TEMA CLARO */
     --rosa-principal: #ffb3c1;
     --rosa-suave: #ffe5ec;
     --rosa-claro-fundo: #fff0f3;
-    --vinho-texto: #4a122e; /* Contraste alto para leitura confortável */
+    --vinho-texto: #4a122e; 
     --verde-mip: #52796f;
     --verde-suave: #84a59d;
     --verde-claro-chat: #e8f1f0;
     --cor-card-branco: #ffffff;
+    --fundo-gradiente-1: var(--rosa-claro-fundo);
+    --fundo-gradiente-2: #f4f9f4;
+    --texto-paragrafo: #4a4a4a;
     --borda-raio-cards: 22px;
+}
+
+/* TEMA ESCURO */
+body.tema-escuro {
+    --rosa-principal: #c97c8c;
+    --rosa-suave: #3a252b;
+    --rosa-claro-fundo: #221418;
+    --vinho-texto: #f9e1e7;
+    --verde-mip: #89b3a7;
+    --verde-suave: #4c665f;
+    --verde-claro-chat: #21302b;
+    --cor-card-branco: #181014;
+    --fundo-gradiente-1: #140b0e;
+    --fundo-gradiente-2: #0f1411;
+    --texto-paragrafo: #d1ced0;
 }
 
 * {
@@ -19,25 +37,27 @@
     padding: 0;
 }
 
+html {
+    font-size: 16px; 
+    transition: font-size 0.3s ease;
+}
+
 body {
     font-family: 'Quicksand', sans-serif;
-    /* Gradiente suave transicionando do rosa romântico para o verde da natureza */
-    background: linear-gradient(180deg, var(--rosa-claro-fundo) 0%, #f4f9f4 100%);
+    background: linear-gradient(180deg, var(--fundo-gradiente-1) 0%, var(--fundo-gradiente-2) 100%);
     color: var(--vinho-texto);
     line-height: 1.6;
     padding: 20px 0 40px 0;
     min-height: 100vh;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Container principal estilo Aplicativo */
 .app-container {
     max-width: 500px;
     margin: 0 auto;
     padding: 0 15px;
 }
 
-/* Barra de Acessibilidade Flutuante */
 .acessibilidade-container {
     display: flex;
     justify-content: center;
@@ -51,12 +71,12 @@ body {
     color: var(--vinho-texto);
     border: 2px solid var(--rosa-principal);
     padding: 10px 22px;
-    border-radius: 30px; /* Formato pílula fofa */
+    border-radius: 30px;
     font-family: 'Fredoka', sans-serif;
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(74, 18, 46, 0.06);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transition: all 0.2s ease-in-out;
 }
 
@@ -70,22 +90,19 @@ body {
     outline: 3px solid var(--verde-mip);
 }
 
-/* --- QUADROS ARREDONDADOS DESTACADOS --- */
-
-/* Cabeçalho do App */
 .card-header {
     background-color: var(--cor-card-branco);
     border-radius: var(--borda-raio-cards);
     padding: 35px 20px;
     margin-bottom: 25px;
-    box-shadow: 0 10px 25px rgba(74, 18, 46, 0.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
     text-align: center;
     border: 2px solid var(--rosa-suave);
     position: relative;
     overflow: hidden;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 
-/* Detalhe estético feminino no topo do card principal */
 .card-header::before {
     content: '';
     position: absolute;
@@ -125,7 +142,6 @@ body {
     gap: 8px;
 }
 
-/* Transforma parágrafos e listas em quadrados arredondados individuais e fofos */
 .card-secao p, 
 .card-secao ol, 
 .metodo-box {
@@ -133,12 +149,12 @@ body {
     border-radius: var(--borda-raio-cards);
     padding: 22px 24px;
     margin-bottom: 18px;
-    box-shadow: 0 8px 20px rgba(74, 18, 46, 0.04);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
     text-align: justify;
     font-size: 1.02rem;
-    color: #4a4a4a;
+    color: var(--texto-paragrafo);
     border: 2px solid var(--rosa-suave);
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
 }
 
 .card-secao p:hover, 
@@ -147,7 +163,6 @@ body {
     border-color: var(--rosa-principal);
 }
 
-/* Listas internas */
 .lista-passos {
     list-style-position: inside;
     padding-left: 5px;
@@ -162,21 +177,20 @@ body {
     margin-bottom: 0;
 }
 
-/* Destaque lateral delicado nos métodos MIP */
 .metodo-box {
     border-left: 8px solid var(--verde-suave);
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
 }
 
-/* Chat Customizado Estilo Aplicativo */
 .container-chat-box {
     background-color: var(--rosa-claro-fundo);
     border-radius: var(--borda-raio-cards);
     padding: 20px;
     margin-top: 15px;
-    box-shadow: 0 10px 25px rgba(74, 18, 46, 0.04);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     border: 2px solid var(--rosa-suave);
+    transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 
 .chat-historico-mensagens {
@@ -190,6 +204,7 @@ body {
     flex-direction: column;
     gap: 10px;
     border: 1px solid var(--rosa-suave);
+    transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 
 .mensagem-chat {
@@ -198,10 +213,9 @@ body {
     max-width: 85%;
     font-size: 0.98rem;
     word-wrap: break-word;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
 }
 
-/* Mensagem enviada pela usuária (Estilo Rosa) */
 .msg-usuario-envio {
     background-color: var(--rosa-suave);
     color: var(--vinho-texto);
@@ -210,10 +224,9 @@ body {
     font-weight: 500;
 }
 
-/* Mensagem enviada pelo robô do MIP (Estilo Verde Natureza) */
 .msg-sistema-bot {
     background-color: var(--verde-claro-chat);
-    color: #24423a;
+    color: var(--vinho-texto);
     align-self: flex-start;
     border-bottom-left-radius: 0;
 }
@@ -233,7 +246,7 @@ body {
     outline: none;
     color: var(--vinho-texto);
     background-color: var(--cor-card-branco);
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, background-color 0.4s ease, color 0.4s ease;
 }
 
 .input-texto-chat:focus {
@@ -242,7 +255,7 @@ body {
 
 .btn-enviar-chat {
     background-color: var(--vinho-texto);
-    color: #fff;
+    color: var(--cor-card-branco);
     border: none;
     padding: 0 24px;
     border-radius: 25px;
@@ -257,7 +270,6 @@ body {
     transform: scale(1.02);
 }
 
-/* Sugestões Rápidas */
 .container-sugestoes-rapidas {
     margin-top: 14px;
     display: flex;
@@ -277,7 +289,7 @@ body {
     cursor: pointer;
     text-align: left;
     transition: all 0.2s;
-    box-shadow: 0 2px 6px rgba(74, 18, 46, 0.02);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
 }
 
 .btn-opcao-sugestao:hover {
