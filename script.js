@@ -1,4 +1,3 @@
-// Aguarda o carregamento completo do DOM para evitar erros no celular e GitHub Pages
 document.addEventListener("DOMContentLoaded", function() {
 
     // 1. Configuração de Acessibilidade (Aumentar/Diminuir Letra)
@@ -76,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Ouvinte para os botões de sugestão rápida (captura o clique em qualquer botão com a classe)
+    // Ouvinte para os botões de sugestão rápida
     document.querySelectorAll('.btn-opcao-sugestao').forEach(botao => {
         botao.addEventListener('click', function() {
             const textoSugestao = this.getAttribute('data-texto');

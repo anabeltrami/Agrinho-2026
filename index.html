@@ -1,108 +1,77 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto MIP</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
-    
+    <title>MIP Elas - Manejo Integrado de Pragas</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
 
-    <div class="acessibilidade-container">
-        <button class="btn-acessibilidade" id="btn-com-fonte-mais">A+ Aumentar Letra 🔍</button>
-        <button class="btn-acessibilidade" id="btn-com-fonte-menos">A- Diminuir Letra ↩️</button>
-    </div>
-
-    <main class="app-container">
+    <div class="app-container">
         
+        <div class="acessibilidade-container">
+            <button class="btn-acessibilidade" id="btn-com-fonte-mais" aria-label="Aumentar tamanho do texto">A +</button>
+            <button class="btn-acessibilidade" id="btn-com-fonte-menos" aria-label="Diminuir tamanho do texto">A -</button>
+        </div>
+
         <header class="card-header">
-            <h1 class="titulo-principal">Projeto MIP 🌱</h1>
-            <p class="subtitulo">Manejo Integrado de Pragas — Uma Agricultura Ecológica e Inteligente</p>
+            <h1 class="titulo-principal">MIP 🌱</h1>
+            <p class="subtitulo">Manejo Integrado de Pragas</p>
         </header>
 
         <section class="card-secao">
-            <h2 class="titulo-secao"> O que é o Projeto MIP?</h2>
-            <p>O projeto Mip, também conhecido como Manejo Integrado de Pragas, é uma maneira ecológica e inteligente de cuidar das plantações. Trocando o método de usar produtos químicos contra insetos, ele usa outros diversos métodos diferentes para proteger a plantação, assim protegendo a natureza.</p>
+            <h2 class="titulo-secao">🌸 O que é o MIP?</h2>
+            <p>O Manejo Integrado de Pragas (MIP) é uma abordagem ecológica e sustentável que busca manter as populações de pragas abaixo do nível de dano econômico, integrando diferentes ferramentas e métodos de controle.</p>
+            <p>Em vez de focar na erradicação completa com químicos agressivos, o MIP prioriza a saúde do ecossistema, combinando a prevenção natural com o monitoramento constante do campo.</p>
         </section>
 
         <section class="card-secao">
-            <h2 class="titulo-secao"> Nosso Objetivo</h2>
-            <p>Esse projeto serve para prevenir, monitorar e controlar pragas que causam grande prejuízo a agricultura, com o objetivo de preservá-las sem eliminar elas completamente e apenas, manter elas controladas. Ajuda também na parte de tomada de decisões, fazendo os agricultores saberem o momento certo de agir.</p>
-        </section>
-
-        <section class="card-secao">
-            <h2 class="titulo-secao"> Na Prática</h2>
-            <p>Permite controlar as pragas de forma eficiente e sustentável. Usando estratégias como utilizar agrotóxicos apenas quando necessário, reduzindo assim os prejuízos nas lavouras, protegendo o meio ambiente e contribuindo para a produção de alimentos mais seguros. Dessa maneira, promovendo uma agricultura mais equilibrada e responsável possível.</p>
-        </section>
-
-        <section class="card-secao">
-            <h2 class="titulo-secao"> Como Começamos?</h2>
+            <h2 class="titulo-secao">📋 Passos Fundamentais</h2>
             <ol class="lista-passos">
-                <li><strong>Identificação da Praga:</strong> O produtor precisa saber exatamente qual organismo está afetando a plantação. Cada organismo exige uma estratégia diferente.</li>
-                <li><strong>Monitoramento:</strong> Técnicos vão a campo periodicamente para contar a quantidade de pragas. Isso serve para determinar se a população está crescendo e se realmente vai causar prejuízo.</li>
-                <li><strong>Tomada de Decisão:</strong> O controle só é ativado quando o número de pragas atinge o chamado "Nível de Controle", o ponto em que o custo do prejuízo gerado supera o custo de aplicar uma medida de controle. Se o número estiver baixo, nada é feito, deixando a própria natureza agir.</li>
+                <li><strong>Diagnóstico:</strong> Identificar corretamente quais insetos ou doenças estão presentes.</li>
+                <li><strong>Monitoramento:</strong> Avaliar a quantidade de pragas e o nível de predadores naturais benéficos.</li>
+                <li><strong>Tomada de Decisão:</strong> Agir somente quando a praga atingir o limite de controle estipulado.</li>
             </ol>
         </section>
 
         <section class="card-secao">
-            <h2 class="titulo-secao"> Alguns Métodos Incríveis</h2>
+            <h2 class="titulo-secao">🐞 Métodos Disponíveis</h2>
             <div class="metodo-box">
-                <strong> Controle Cultural:</strong> Muda o manejo da plantação para torná-la desfavorável às pragas.
+                <strong>Controle Biológico:</strong> Utilização de inimigos naturais (como joaninhas ou vespas benéficas) para reduzir a população de pragas de maneira 100% orgânica.
             </div>
             <div class="metodo-box">
-                <strong> Controle Biológico:</strong> Usa a própria natureza a favor do produtor, introduzindo inimigos naturais das pragas, como insetos predadores ou microrganismos.
-            </div>
-            <div class="metodo-box">
-                <strong> Controle Genético:</strong> Uso de plantas modificadas ou variedades que já nascem naturalmente mais resistentes ao ataque de insetos e doenças.
-            </div>
-            <div class="metodo-box">
-                <strong> Controle Comportamental:</strong> Confunde ou atrai os insetos usando o comportamento deles, como armadilhas com feromônios para capturá-los.
+                <strong>Controle Cultural:</strong> Rotação de culturas, escolha de sementes saudáveis e manejo adequado do solo para evitar que as pragas se estabeleçam.
             </div>
         </section>
 
         <section class="card-secao">
-            <h2 class="titulo-secao"> Importância para o Planeta</h2>
-            <p>É importante termos essa opção pois ela permite controlar as pragas, ao invés de utilizar agrotóxicos como a primeira opção. Tem um conjunto de técnicas para escolher a certa para cada situação. Fazendo com que dessa maneira o ecossistema seja preservado, protegendo os insetos benéficos.</p>
-        </section>
-
-        <section class="card-secao">
-            <h2 class="titulo-secao">💬 Espaço de Interação & Dúvidas</h2>
-            <p>Tem alguma dúvida ou está enfrentando dificuldades na sua lavoura? Escreva abaixo ou clique em uma das sugestões para ver as respostas automáticas! 👇</p>
-            
+            <h2 class="titulo-secao">💬 Assistente de Manejo</h2>
             <div class="container-chat-box">
-                <div id="chat-historico" class="chat-historico-mensagens">
-                    <div class="mensagem-chat msg-sistema-bot">Olá! Seja bem-vindo ao suporte do Projeto MIP. Como posso ajudar na sua lavoura hoje? 🌿</div>
+                <div class="chat-historico-mensagens" id="chat-historico">
+                    <div class="mensagem-chat msg-sistema-bot">
+                        Olá! Sou sua assistente virtual de MIP. Como posso te ajudar a proteger sua plantação hoje de forma sustentável? 🌿
+                    </div>
                 </div>
                 
                 <div class="area-digitacao-chat">
-                    <input type="text" id="chat-mensagem-input" class="input-texto-chat" placeholder="Escreva aqui seu problema ou dúvida...">
+                    <input type="text" class="input-texto-chat" id="chat-mensagem-input" placeholder="Digite sua dúvida aqui...">
                     <button class="btn-enviar-chat" id="btn-enviar-msg">Enviar</button>
                 </div>
-                
+
                 <div class="container-sugestoes-rapidas">
-                    <button class="btn-opcao-sugestao" data-texto="Os organismos não estão sumindo mesmo eu tendo aplicado um método!">🐛 Organismos não estão sumindo</button>
-                    <button class="btn-opcao-sugestao" data-texto="O que é o controle biológico?">🐞 Sobre o Controle Biológico</button>
+                    <button class="btn-opcao-sugestao" data-text="As pragas não estão sumindo da plantação">⚠️ "As pragas não estão sumindo..."</button>
+                    <button class="btn-opcao-sugestao" data-text="Como funciona o Controle Biológico?">🐞 "Como funciona o Controle Biológico?"</button>
                 </div>
             </div>
         </section>
 
-        <section class="card-secao">
-            <h2 class="titulo-secao"> Referências Bibliográficas</h2>
-            <p style="font-style: italic; font-size: 0.95rem; color: #555; background: none; box-shadow: none; padding: 0; margin: 0;">Todo o conteúdo textual deste site foi elaborado e escrito de forma autoral por <strong>Ana Julia Ramos Beltrami</strong>.</p>
-            <p style="font-size: 0.95rem; font-weight: bold; color: var(--verde-escuro); background: none; box-shadow: none; padding: 0; margin-top: 10px;">Hashtag do Projeto: #agrinho2026</p>
-        </section>
-
         <footer class="rodape-app">
-            <p style="background: none; box-shadow: none; padding: 0; text-align: center; font-size: 0.9rem;">Projeto MIP © 2026</p>
-            <p style="background: none; box-shadow: none; padding: 0; text-align: center; font-size: 0.9rem;">Desenvolvido com 💚 para o Concurso Agrinho</p>
+            Cultivando com Amor & Tecnologia · 2026
         </footer>
-    </main>
 
-    <script src="script.js"></script>
+    </div>
+
 </body>
 </html>
