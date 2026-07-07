@@ -1,6 +1,5 @@
-alert("Oi! O arquivo JavaScript está funcionando!");
 document.addEventListener("DOMContentLoaded", function() {
-
+alert("Oi! O arquivo JavaScript está funcionando!");
     let tamanhoFonte = 16;
     
     const btnTema = document.getElementById('btn-tema');
