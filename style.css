@@ -1,12 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap');
+
 :root {
-    --verde-escuro: #2d6a4f;
-    --verde-suave: #40916c;
-    --fundo-gradiente-inicio: #f9fecf; /* Amarelinho fofo do topo do print */
-    --fundo-gradiente-fim: #eef9f2;
-    --cor-azul-texto: #1d3557;
+    /* Paleta Feminina e Botânica (MIP Elegante) */
+    --rosa-principal: #ffb3c1;
+    --rosa-suave: #ffe5ec;
+    --rosa-claro-fundo: #fff0f3;
+    --vinho-texto: #4a122e; /* Contraste alto para leitura confortável */
+    --verde-mip: #52796f;
+    --verde-suave: #84a59d;
+    --verde-claro-chat: #e8f1f0;
     --cor-card-branco: #ffffff;
-    --cor-azul-botao: #4a90e2;
-    --borda-raio-cards: 25px; /* Cantos bem arredondados para os quadros */
+    --borda-raio-cards: 22px;
 }
 
 * {
@@ -17,12 +21,13 @@
 
 body {
     font-family: 'Quicksand', sans-serif;
-    background: linear-gradient(180deg, var(--fundo-gradiente-inicio) 0%, #bde0fe 100%);
-    color: var(--cor-azul-texto);
+    /* Gradiente suave transicionando do rosa romântico para o verde da natureza */
+    background: linear-gradient(180deg, var(--rosa-claro-fundo) 0%, #f4f9f4 100%);
+    color: var(--vinho-texto);
     line-height: 1.6;
-    padding: 10px 0 40px 0;
-    transition: font-size 0.3s ease;
+    padding: 20px 0 40px 0;
     min-height: 100vh;
+    transition: background-color 0.3s ease;
 }
 
 /* Container principal estilo Aplicativo */
@@ -37,86 +42,112 @@ body {
     display: flex;
     justify-content: center;
     gap: 12px;
-    margin: 15px auto 25px auto;
+    margin: 10px auto 25px auto;
     max-width: 400px;
-    padding: 0 15px;
 }
 
 .btn-acessibilidade {
     background-color: var(--cor-card-branco);
-    color: var(--cor-azul-botao);
-    border: 2px solid var(--verde-escuro);
+    color: var(--vinho-texto);
+    border: 2px solid var(--rosa-principal);
     padding: 10px 22px;
-    border-radius: 30px; /* Formato pílula */
+    border-radius: 30px; /* Formato pílula fofa */
     font-family: 'Fredoka', sans-serif;
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 12px rgba(74, 18, 46, 0.06);
+    transition: all 0.2s ease-in-out;
 }
 
 .btn-acessibilidade:hover {
-    transform: scale(1.03);
-    background-color: #f0f7f4;
+    transform: translateY(-2px);
+    background-color: var(--rosa-suave);
+    border-color: var(--vinho-texto);
+}
+
+.btn-acessibilidade:focus {
+    outline: 3px solid var(--verde-mip);
 }
 
 /* --- QUADROS ARREDONDADOS DESTACADOS --- */
 
-/* O cabeçalho principal ganha o seu próprio quadro */
+/* Cabeçalho do App */
 .card-header {
     background-color: var(--cor-card-branco);
     border-radius: var(--borda-raio-cards);
-    padding: 30px 20px;
+    padding: 35px 20px;
     margin-bottom: 25px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    box-shadow: 0 10px 25px rgba(74, 18, 46, 0.05);
     text-align: center;
-    border: 2px solid rgba(45, 106, 79, 0.15);
+    border: 2px solid var(--rosa-suave);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Cada seção funciona como um agrupador */
+/* Detalhe estético feminino no topo do card principal */
+.card-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--rosa-principal), var(--verde-suave));
+}
+
 .card-secao {
     margin-bottom: 30px;
 }
 
-/* Os títulos ficam destacados */
 .titulo-principal {
     font-family: 'Fredoka', sans-serif;
-    color: var(--verde-escuro);
-    font-size: 2.2rem;
-    margin-bottom: 12px;
+    color: var(--vinho-texto);
+    font-size: 2.3rem;
+    margin-bottom: 8px;
 }
 
 .subtitulo {
     font-size: 1.05rem;
-    color: #666;
+    color: var(--verde-mip);
     font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
 .titulo-secao {
     font-family: 'Fredoka', sans-serif;
-    color: var(--verde-escuro);
+    color: var(--vinho-texto);
     font-size: 1.4rem;
-    margin-bottom: 12px;
-    padding-left: 8px;
+    margin-bottom: 15px;
+    padding-left: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-/* Todo parágrafo e lista vira um QUADRO BRANCO ARREDONDADO individual com bordas fofas */
+/* Transforma parágrafos e listas em quadrados arredondados individuais e fofos */
 .card-secao p, 
 .card-secao ol, 
 .metodo-box {
     background-color: var(--cor-card-branco);
     border-radius: var(--borda-raio-cards);
     padding: 22px 24px;
-    margin-bottom: 16px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 18px;
+    box-shadow: 0 8px 20px rgba(74, 18, 46, 0.04);
     text-align: justify;
     font-size: 1.02rem;
-    color: #444;
-    border: 2px solid rgba(45, 106, 79, 0.1); /* Delicada bordinha verde para dar acabamento */
+    color: #4a4a4a;
+    border: 2px solid var(--rosa-suave);
+    transition: transform 0.2s ease;
 }
 
-/* Ajuste específico para as listas de passos não perderem o recuo */
+.card-secao p:hover, 
+.card-secao ol:hover {
+    transform: translateY(-2px);
+    border-color: var(--rosa-principal);
+}
+
+/* Listas internas */
 .lista-passos {
     list-style-position: inside;
     padding-left: 5px;
@@ -124,115 +155,141 @@ body {
 
 .lista-passos li {
     margin-bottom: 12px;
+    padding: 4px 0;
 }
 
 .lista-passos li:last-child {
     margin-bottom: 0;
 }
 
-/* Destaca as caixinhas dos métodos com uma bordinha azul na esquerda */
+/* Destaque lateral delicado nos métodos MIP */
 .metodo-box {
-    border-left: 8px solid #a9def9;
+    border-left: 8px solid var(--verde-suave);
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
 }
 
-/* Chat Customizado Dentro de Quadro */
+/* Chat Customizado Estilo Aplicativo */
 .container-chat-box {
-    background-color: #f0f4f8;
+    background-color: var(--rosa-claro-fundo);
     border-radius: var(--borda-raio-cards);
-    padding: 18px;
-    margin-top: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    border: 2px solid rgba(45, 106, 79, 0.1);
+    padding: 20px;
+    margin-top: 15px;
+    box-shadow: 0 10px 25px rgba(74, 18, 46, 0.04);
+    border: 2px solid var(--rosa-suave);
 }
 
 .chat-historico-mensagens {
-    height: 220px;
+    height: 250px;
     overflow-y: auto;
     background-color: var(--cor-card-branco);
-    border-radius: 20px;
-    padding: 12px;
-    margin-bottom: 12px;
+    border-radius: 18px;
+    padding: 15px;
+    margin-bottom: 14px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    border: 1px solid #e2e8f0;
+    gap: 10px;
+    border: 1px solid var(--rosa-suave);
 }
 
 .mensagem-chat {
-    padding: 10px 14px;
-    border-radius: 18px;
+    padding: 12px 16px;
+    border-radius: 20px;
     max-width: 85%;
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     word-wrap: break-word;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
 }
 
+/* Mensagem enviada pela usuária (Estilo Rosa) */
 .msg-usuario-envio {
-    background-color: #a9def9;
-    color: var(--cor-azul-texto);
+    background-color: var(--rosa-suave);
+    color: var(--vinho-texto);
     align-self: flex-end;
     border-bottom-right-radius: 0;
+    font-weight: 500;
 }
 
+/* Mensagem enviada pelo robô do MIP (Estilo Verde Natureza) */
 .msg-sistema-bot {
-    background-color: #d8f3dc;
-    color: var(--verde-escuro);
+    background-color: var(--verde-claro-chat);
+    color: #24423a;
     align-self: flex-start;
     border-bottom-left-radius: 0;
 }
 
 .area-digitacao-chat {
     display: flex;
-    gap: 8px;
+    gap: 10px;
 }
 
 .input-texto-chat {
     flex: 1;
-    padding: 12px 18px;
+    padding: 14px 20px;
     border-radius: 25px;
-    border: 2px solid var(--verde-suave);
+    border: 2px solid var(--rosa-principal);
     font-family: 'Quicksand', sans-serif;
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     outline: none;
+    color: var(--vinho-texto);
+    background-color: var(--cor-card-branco);
+    transition: border-color 0.2s;
+}
+
+.input-texto-chat:focus {
+    border-color: var(--verde-mip);
 }
 
 .btn-enviar-chat {
-    background-color: var(--verde-escuro);
+    background-color: var(--vinho-texto);
     color: #fff;
     border: none;
-    padding: 0 20px;
+    padding: 0 24px;
     border-radius: 25px;
     font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
     cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
 }
 
+.btn-enviar-chat:hover {
+    background-color: var(--verde-mip);
+    transform: scale(1.02);
+}
+
+/* Sugestões Rápidas */
 .container-sugestoes-rapidas {
-    margin-top: 10px;
+    margin-top: 14px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
 }
 
 .btn-opcao-sugestao {
     background-color: var(--cor-card-branco);
-    border: 1px solid var(--verde-suave);
-    color: var(--verde-escuro);
-    padding: 10px 14px;
-    border-radius: 15px;
-    font-size: 0.88rem;
+    border: 1px solid var(--rosa-principal);
+    color: var(--vinho-texto);
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 0.9rem;
     font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
     cursor: pointer;
     text-align: left;
-    transition: background-color 0.2s;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(74, 18, 46, 0.02);
 }
 
 .btn-opcao-sugestao:hover {
-    background-color: #e8f5ed;
+    background-color: var(--rosa-claro-fundo);
+    border-color: var(--vinho-texto);
+    padding-left: 20px;
 }
 
 .rodape-app {
     text-align: center;
-    padding: 20px 0;
+    padding: 25px 0;
     font-size: 0.9rem;
-    color: #555;
-    font-weight: bold;
+    color: var(--verde-mip);
+    font-family: 'Fredoka', sans-serif;
 }
